@@ -49,26 +49,64 @@
             </div>
             <div class="main_searchbox container">
 
-                <form action="" class="main__form">
+                <!-- <form action="" class="main__form">
                     <input type="text" class="main__input" placeholder="Buscar por zona...">
                     <input type="text" class="main__input" placeholder="Buscar por tipo de servicio...">
                     <input type="text" class="main__input" placeholder="Buscar por obra social...">
                     <button class="main__button">Buscar</button>
 
-                </form>
-                <div class="buscador">
-                    <section class="layout">
-                        <div class="dia">Lunes</div>
-                        <div>Martes</div>
-                        <div>Miercoles</div>
-                        <div>Jueves</div>
-                        <div>Viernes</div>
-                        <div>6</div>
-                        <div>7</div>
-                        <div>8</div>
-                        <div>9</div>
-                        <div>10</div>
-                    </section>
+                </form> -->
+                <div class="contenedor">
+
+                    <div class="bloque-busqueda">
+                        <div class="input-container">
+                            <input type="text" class="custom-input" placeholder="Ingrese su texto">
+                        </div>
+                        <div class="input-container">
+                            <input type="text" class="custom-input" placeholder="Ingrese su texto">
+                        </div>
+                        <div class="input-container">
+                            <input type="text" class="custom-input" placeholder="Ingrese su texto">
+                        </div>
+
+                        <div class="separador-tabla-boton">
+                            <div class="tablaHorarios" id="tablaHorarios">
+                                <div class="celda"></div>
+                                <div class="celda">Lunes</div>
+                                <div class="celda">Martes</div>
+                                <div class="celda">Miércoles</div>
+                                <div class="celda">Jueves</div>
+                                <div class="celda">Viernes</div>
+                                <div class="celda">Sábado</div>
+
+                                <div class="celda" onclick="cambiarColor(this)">Mañana</div>
+                                <div id="1" class="celda celda-clic celda-izquierda-sup" onclick="cambiarColor(this)">
+                                </div>
+                                <div id="2" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                                <div id="3" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                                <div id="4" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                                <div id="5" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                                <div id="6" class="celda celda-clic celda-derecha-sup" onclick="cambiarColor(this)">
+                                </div>
+
+                                <div id="" class="celda" onclick="cambiarColor(this)">Tarde</div>
+                                <div id="7" class="celda celda-clic celda-izquierda-inf" onclick="cambiarColor(this)">
+                                </div>
+                                <div id="8" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                                <div id="9" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                                <div id="10" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                                <div id="11" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                                <div id="12" class="celda celda-clic celda-derecha-inf" onclick="cambiarColor(this)">
+                                </div>
+                            </div>
+                            <div class="boton-busqueda"> <a href="#" class="mi-boton" id="buscarProfesional">Buscar
+                                    profesional</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
                 </div>
 
             </div>
@@ -171,6 +209,12 @@
             </div>
         </div>
     </footer>
+    <script>
+        function cambiarColor(elemento) {
+            elemento.classList.toggle('celda-verde');
+        }
+    </script>
+    <script type="module" src="./index.js"></script>
 </body>
 
 </html>
