@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <hr>
+    <h1>Datos del paciente</h1>
+    <div class="contenedor-registro-paciente">
+      <div class="formulario-generico">
+        <form id="formulario">
+          <div class="contenedor-izquierda">
+            <label for="nombre">
+              <span>Nombre:</span>
+              <div class="input-texto">
+                <input type="text" placeholder="Nombre" id="nombre" name="nombre" required>
+              </div>
+            </label>
+            <label for="apellido">
+              <span>Apellido:</span>
+              <div class="input-texto">
+                <input type="text" placeholder="Apellido" id="apellido" name="apellido" required>
+              </div>
+            </label>
+            <label for="sexo">
+              <span>Sexo:</span>
+              <div class="switch-container ">
+            <label for="masculino">Masculino</label>
+            <input type="radio" id="masculino" name="sexo" value="masculino">
+            <label for="acompanante">Femenino</label>
+            <input type="radio" id="femenino" name="sexo" value="femenino">
+            </div>
+            </label>
+          </div>
+          <div class="contenedor-derecha">
+            <label for="fechaNacimiento">
+              <span>Nacimiento:</span>
+              <div class="input-texto">
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+              </div>
+            </label>
+            <label for="diagnostico">
+              <span>Diagnostico</span>
+              <div class="input-texto">
+                <input type="text" placeholder="Diagnostico" id="diagnostico" name="diagnostico" required>
+              </div>
+            </label>
+            <label for="CUD">
+              <span>CUD</span>
+              <div class="input-texto">
+                <input type="text" placeholder="CUD" id="CUD" name="CUD" required>
+              </div>
+            </label>
+          </div>
+          <button class="boton-basico boton-formulario" type="button" onclick="RegistroPaciente()">Confirmar</button>
+        </form>
+      </div>
+    </div>
+    <hr>
+</body>
+</html>
