@@ -1,7 +1,7 @@
 window.onload = async function ()  {
     const urlParams = new URLSearchParams(window.location.search);
     const dato = urlParams.get('tutorId');
-    document.getElementById
+    document.getElementById('ocultoPaciente').value = dato;
 };
 
 
