@@ -14,14 +14,19 @@ document.getElementById("boton").addEventListener("click", async() =>
     let descripcion = document.getElementById("descripcion").value;
     let formulario = document.querySelector(".formulario");
     let obrasocial = document.querySelector(".obrasocial");
-    let localizacion = document.querySelector(".localizacion");
+    let localizacion = document.getElementById("localizacion");
     let usuarioId = document.getElementById("oculto").value;
     let experiencia = document.getElementById("experiencia");
     let escolar = document.getElementById("escolar");
     let domiciliario = document.getElementById("domiciliario");
     let documentacion = document.getElementById("documentacion");
-
-    if(!escolar.checked && !domiciliario.checked)
+    
+    if(localizacion.value === "")
+    {
+      domiciliario.setCustomValidity('La seleccion de un campo es obligatorio'); 
+      formulario.reportValidity(); 
+    }
+    else if(!escolar.checked && !domiciliario.checked)
     {
       domiciliario.setCustomValidity('La seleccion de un campo es obligatorio'); 
       formulario.reportValidity(); 
@@ -36,21 +41,21 @@ document.getElementById("boton").addEventListener("click", async() =>
         formulario.reportValidity();
     }
 
-    else if(documentacion){
-
+    else if(documentacion.value === ""){
+        documentacion.setCustomValidity('El campo de experiencia debe de ser obligatorio');
+        formulario.reportValidity();
     }
     else
     {
         let disponibilidad = cargarSeleccion();
-        // let documentacion = "Viva messi";
-        let response = postAcompanante(usuarioId, localizacion, telefono.value, disponibilidad, documentacion, experiencia.value);
-        let acompananteId= response.id;
+        let response = await postAcompanante(usuarioId, localizacion.value, telefono.value, disponibilidad, documentacion.value, experiencia.value);
+        let acompananteId= response.acompananteId;
         //post especialidad
-        if(escolar.value == "escolar"){
-            postEspecialidad(acompananteId);
+        if(escolar.checked){
+          await postEspecialidad(acompananteId, 1);
         }
-        if(domiciliario.value === "domiciliario" ){
-            postEspecialidad(acompananteId);
+        if(domiciliario.checked){
+          await postEspecialidad(acompananteId, 2);
         }
         //post obra social
 
@@ -69,7 +74,7 @@ function cargarSeleccion() {
   });
   console.log(crearArreglo(agenda));
   console.log(obtenerIndicesDesdeCadena(crearArreglo(agenda)));
-  return obtenerIndicesDesdeCadena(crearArreglo(agenda));
+  return crearArreglo(agenda);
 }
 
 function crearArreglo(indicesRecibidos) {
