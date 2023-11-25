@@ -1,4 +1,4 @@
-export default async function postAcompanante(usuarioId, zonaLaboral, contacto, disponibilidad, documentacion, experiencia)
+export async function postAcompanante(usuarioId, zonaLaboral, contacto, disponibilidad, documentacion, experiencia)
 {
     let config = {
         method: 'POST',
@@ -32,7 +32,7 @@ export default async function postAcompanante(usuarioId, zonaLaboral, contacto, 
 
 
 
-export default async function postAcompanante(acompananteId, especialidadId)
+export async function postEspecialidad(acompananteId, especialidadId)
 {
     let config = {
         method: 'POST',
@@ -58,4 +58,9 @@ export default async function postAcompanante(acompananteId, especialidadId)
     {
         console.log(error);
     }
+};
+
+export default {
+    postAcompanante,
+    postEspecialidad,
 };

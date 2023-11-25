@@ -1,4 +1,4 @@
-import postTutor from "../../../Services/TutorService.js";
+import { postTutor } from "../../../Services/TutorService.js";
 import postUsuario from "../../../Services/usuarioService.js";
 
 document.getElementById("boton").addEventListener("click", async() =>
@@ -49,25 +49,13 @@ document.getElementById("boton").addEventListener("click", async() =>
     {
         alert(tipoUsuarioInputs[numUsuario].value); 
         	
-// { Esto devuelve el postUsuario
-//   "usuarioId": 6,
-//   "cuil": 1,
-//   "nombre": "string",
-//   "apellido": "string",
-//   "correoElectronico": "string",
-//   "contrasena": "string",
-//   "fotoPerfil": "string",
-//   "domicilio": "string",
-//   "fechaNacimiento": "12/08/1990",
-//   "estadoUsuarioId": 0
-// }
     let response = await postUsuario(nombre.value, apellido.value, correo.value, fechaNacimiento.value, cuil.value, domicilio.value, "rfasfasfasfas", contrasena); //Consultar status
-    let id = response.id;
+    let usuarioId = response.usuarioId;
     if(tipoUsuarioInputs[numUsuario].value == "acompanante"){
         window.location.href = `../Acompanante/RegistroAcompanante/registroAcompanante.html?usuarioId=${usuarioId}`; //Post acompanante
     }
     if(tipoUsuarioInputs[numUsuario].value == "tutor"){
-        let tutorResponse = postTutor(id);
+        let tutorResponse = await postTutor(usuarioId);
         let tutorId = tutorResponse.tutorId;
         window.location.href = `../tutor/registroPaciente/registroPaciente.html?tutorId=${tutorId}`; //Post tutor
     }};

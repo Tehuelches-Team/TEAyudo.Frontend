@@ -1,8 +1,8 @@
-import postAcompanante from "../../../../Services/AcompTerapService";
+import {postAcompanante,postEspecialidad} from "../../../../Services/AcompTerapService.js";
 
 window.onload = function() {
   const urlParams = new URLSearchParams(window.location.search);  
-  const dato = urlParams.get('id'); //guardar id en un div invisible
+  const dato = urlParams.get('usuarioId'); //guardar id en un div invisible
   document.getElementById("oculto").value = dato;
 };
 
@@ -10,46 +10,50 @@ window.onload = function() {
 
 document.getElementById("boton").addEventListener("click", async() =>
 {
-    let telefono = document.getElementById("telefono").value;
-    let tipoUsuarioInputs = document.querySelectorAll('input[name="tipoUsuario"]');
+    let telefono = document.getElementById("telefono");
     let descripcion = document.getElementById("descripcion").value;
     let formulario = document.querySelector(".formulario");
     let obrasocial = document.querySelector(".obrasocial");
-    let localizacion = document.querySelector(".localizacion").value;
+    let localizacion = document.querySelector(".localizacion");
     let usuarioId = document.getElementById("oculto").value;
-    let noSeleccionado = true;
-    let numUsuario;
-    for (var i = 0; i < tipoUsuarioInputs.length; i++) {
-        if (tipoUsuarioInputs[i].checked) {
-            noSeleccionado = false;
-            numUsuario = i;
-        }
-    };
-    if(noSeleccionado)
+    let experiencia = document.getElementById("experiencia");
+    let escolar = document.getElementById("escolar");
+    let domiciliario = document.getElementById("domiciliario");
+    let documentacion = document.getElementById("documentacion");
+
+    if(!escolar.checked && !domiciliario.checked)
     {
-        document.getElementById("domiciliario").setCustomValidity('Debe seleccionar un tipo de acompanante');          
-        formulario.reportValidity(); 
+      domiciliario.setCustomValidity('La seleccion de un campo es obligatorio'); 
+      formulario.reportValidity(); 
     }
-    else if(telefono.length != 10)
+    else if(telefono.value.length != 10)
     {
         telefono.setCustomValidity('El numero de telefono debe tener 10 dígitos'); 
         formulario.reportValidity(); 
     }  
+    else if(experiencia.value === ""){
+        experiencia.setCustomValidity('El campo de experiencia debe de ser obligatorio');
+        formulario.reportValidity();
+    }
+
+    else if(documentacion){
+
+    }
     else
     {
         let disponibilidad = cargarSeleccion();
-        let documentacion = "Viva messi";
-        let experiencia = "5 años";
-        let response = postAcompanante(usuarioId, localizacion, telefono, disponibilidad, documentacion, experiencia);
+        // let documentacion = "Viva messi";
+        let response = postAcompanante(usuarioId, localizacion, telefono.value, disponibilidad, documentacion, experiencia.value);
         let acompananteId= response.id;
         //post especialidad
-        if(tipoUsuarioInputs[numUsuario].value === "escolar" ){
+        if(escolar.value == "escolar"){
             postEspecialidad(acompananteId);
         }
-        if(tipoUsuarioInputs[numUsuario].value === "domiciliario" ){
+        if(domiciliario.value === "domiciliario" ){
             postEspecialidad(acompananteId);
         }
         //post obra social
+
     }
 });
 
