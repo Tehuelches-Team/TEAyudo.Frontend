@@ -1,0 +1,120 @@
+body {
+    background-color: #F3FFFF;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #525252;
+    line-height:1.5em 
+}
+h1 {
+    text-align: center;
+}
+.contenedor {
+    width: 940px;
+    margin: 0 auto;
+}
+.boton-basico {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #2980b9;
+    border: 0;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.imagen {
+    width: 100%;
+    height: auto;
+    height: auto;
+    display: block;
+    margin-bottom: 0.8em;
+    border-radius: 10px;
+}
+.columna-lista-propuestas {
+    float: left;
+    width: 30%;
+}
+.columna-visualizados {
+    float: right;
+    width: 68%;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-left: 2%;
+    margin-bottom: 1em;
+}
+.filtros-propuestas {
+    height: 50px;
+}
+.filtros-propuestas span{
+    margin-right: 1em;
+}
+.elemento-lista-propuesta {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    height: 6em;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+.elemento-lista-propuesta img {
+    height: 100%;
+}
+.elemento-lista-propuesta span{
+    display: inline-block;
+    font-weight: bold;
+}
+.columa-izquierda-elemento-lista-propuesta {
+    width: 60%;
+    float: left;
+}
+.columa-derecha-elemento-lista-propuesta {
+    width: 40%;
+    float: left;
+}
+.elemento-lista-propuesta-id {
+    font-size: 0.8em;
+}
+.elemento-lista-propuesta-nombre {
+    font-size: 1.2em;
+    margin: 0 0 ;
+}
+.elemento-lista-propuesta-estado {
+    font-size: 0.8em;
+    align-self: flex-end;
+    margin-top: auto;
+}
+.ul-lista-datos-usuario {
+    list-style: none;
+    column-count: 2;
+    column-gap: 1em;
+}
+.ul-lista-datos-usuario li {
+    margin-bottom: 10px;
+}
+.visualizar-propuesta {
+    padding: 0 3%;
+}
+.clear{
+    clear: both;
+}
+.boton-aceptar {
+    background-color: #02bc50;
+    margin-right: 2em;
+}
+.boton-rechazar {
+    background-color: #e74c3c;
+}
+.bloque-responder-propuesta {
+    float:right;
+    padding-bottom: 1em;
+}
+.elemento-lista-propuesta-vacio p {
+    font-weight: bold;
+}
