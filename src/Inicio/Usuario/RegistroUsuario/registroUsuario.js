@@ -64,12 +64,11 @@ document.getElementById("boton").addEventListener("click", async() =>
     let response = await postUsuario(nombre.value, apellido.value, correo.value, fechaNacimiento.value, cuil.value, domicilio.value, "rfasfasfasfas", contrasena); //Consultar status
     let id = response.id;
     if(tipoUsuarioInputs[numUsuario].value == "acompanante"){
-        window.location.href = `../Acompanante/RegistroAcompanante/registroAcompanante.html=${id}`; //Post acompanante
+        window.location.href = `../Acompanante/RegistroAcompanante/registroAcompanante.html?usuarioId=${usuarioId}`; //Post acompanante
     }
     if(tipoUsuarioInputs[numUsuario].value == "tutor"){
-        postTutor(id);
-        window.location.href = `../Tutor/RegistroPaciente/registroPaciente.html=${id}`; //Post tutor
-    }
-    
-    };
+        let tutorResponse = postTutor(id);
+        let tutorId = tutorResponse.tutorId;
+        window.location.href = `../tutor/registroPaciente/registroPaciente.html?tutorId=${tutorId}`; //Post tutor
+    }};
 });

@@ -1,3 +1,12 @@
+window.onload = async function ()  {
+    const urlParams = new URLSearchParams(window.location.search);
+    const dato = urlParams.get('tutorId');
+    document.getElementById
+};
+
+
+
+
 export default async function postTutor(usuarioId)
 {
     let config = {
@@ -14,7 +23,7 @@ export default async function postTutor(usuarioId)
     { 
         const response = await fetch
         (
-            `https://localhost:7235/api/Acompanantes/Acompanante`, config
+            `https://localhost:7044/api/Tutor`, config
         );
         let result = await response.json();
         return result;

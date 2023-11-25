@@ -25,19 +25,16 @@ document.getElementById("boton").addEventListener("click", async() =>
             numUsuario = i;
         }
     };
-
     if(noSeleccionado)
     {
         document.getElementById("domiciliario").setCustomValidity('Debe seleccionar un tipo de acompanante');          
         formulario.reportValidity(); 
     }
-
     else if(telefono.length != 10)
     {
         telefono.setCustomValidity('El numero de telefono debe tener 10 dígitos'); 
         formulario.reportValidity(); 
     }  
-
     else
     {
         let disponibilidad = cargarSeleccion();
@@ -52,13 +49,11 @@ document.getElementById("boton").addEventListener("click", async() =>
         if(tipoUsuarioInputs[numUsuario].value === "domiciliario" ){
             postEspecialidad(acompananteId);
         }
-
         //post obra social
     }
 });
 
-document
-  .getElementById("boton").addEventListener("click", function () {
+document.getElementById("boton").addEventListener("click", function () {
     
   });
 

@@ -27,9 +27,10 @@ function crearArreglo(indicesRecibidos) {
       arreglo[indice - 7 + 6] = 1; // Tarde
     }
   });
-
   return arreglo.join("");
 }
+
+
 
 function obtenerIndicesDesdeCadena(cadena) {
   const arreglo = cadena.split("").map(Number);
