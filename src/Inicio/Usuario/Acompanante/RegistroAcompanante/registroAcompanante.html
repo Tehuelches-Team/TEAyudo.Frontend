@@ -13,9 +13,10 @@
         <div class="main-div">
             <div class="formulario-generico">
                 <form class="formulario">
+                    <input type="hidden" id="oculto" name="oculto" value="0">
                     <label class="label" for="nombre">
                         <span>Localización laboral:</span>
-                        <input class="input-texto" type="text" placeholder="" id="localizacion" name="" required disabled>
+                        <input class="input-texto" type="text" placeholder="" id="localizacion" name="" value="Berazategui" required disabled>
                     </label>
                     <label class="label" for="apellido">
                         <span>Obras sociales:</span>
@@ -39,11 +40,11 @@
                         </select>
                         <!-- <input class="input-texto" type="text" placeholder="" id="obraSociales" name="" required> -->
                     </label>
-                    <div class="obraSociales-seleccionadas">
+                    <!-- <div class="obraSociales-seleccionadas">
                         <div class="obraSocial-escogida">OSDE</div>
                         <div class="obraSocial-escogida">Galeno</div>
                         <div class="obraSocial-escogida">OSUT</div>
-                    </div>
+                    </div> -->
                     <label class="label" for="correo">
                         <span>Telefono laboral:</span>
                         <input class="input-texto" type="text" placeholder="" id="telefono" name="" required>
@@ -55,10 +56,10 @@
                     <label class="label">
                         <span>Modalidad:</span>
                         <div class="switch-container">
-                            <label for="Escolar">Escolar</label>
-                            <input type="radio" id="Escolar" name="tipoUsuario" value="Escolar">
-                            <label for="Domiciliario">Domiciliario</label>
-                            <input type="radio" id="Domiciliario" name="tipoUsuario" value="Domiciliario">
+                            <label for="escolar">Escolar</label>
+                            <input type="radio" id="escolar" name="tipoUsuario" value="escolar">
+                            <label for="domiciliario">Domiciliario</label>
+                            <input type="radio" id="domiciliario" name="tipoUsuario" value="domiciliario">
                         </div>
                     </label>
                     <label class="label">
@@ -78,14 +79,14 @@
                 <div class="celda">Jueves</div>
                 <div class="celda">Viernes</div>
                 <div class="celda">Sábado</div>
-                <div class="celda"">Mañana</div>
+                <div class="celda">Mañana</div>
                 <div id="1" class="celda celda-clic celda-izquierda-sup" onclick="cambiarColor(this)"></div>
                 <div id="2" class="celda celda-clic" onclick="cambiarColor(this)" ></div>
                 <div id="3" class="celda celda-clic" onclick="cambiarColor(this)"></div>
                 <div id="4" class="celda celda-clic" onclick="cambiarColor(this)"></div>
                 <div id="5" class="celda celda-clic" onclick="cambiarColor(this)"></div>
                 <div id="6" class="celda celda-clic celda-derecha-sup" onclick="cambiarColor(this)"></div>
-                <div class="celda"">Tarde</div>
+                <div class="celda">Tarde</div>
                 <div id="7" class="celda celda-clic celda-izquierda-inf" onclick="cambiarColor(this)"></div>
                 <div id="8" class="celda celda-clic" onclick="cambiarColor(this)"></div>
                 <div id="9" class="celda celda-clic" onclick="cambiarColor(this)"></div>

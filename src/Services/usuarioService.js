@@ -1,4 +1,4 @@
-export default async function postUsuario(nombre, apellido, correo, fechaNacimiento, cuil, telefono, tipoUsuario)
+export default async function postUsuario(nombre, apellido, correo, fechaNacimiento, cuil, domicilio, fotoPerfil, contrasena)
 {
     let config = {
         method: 'POST',
@@ -7,15 +7,16 @@ export default async function postUsuario(nombre, apellido, correo, fechaNacimie
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+            "cuil": cuil,
             "nombre": nombre,
             "apellido": apellido,
-            "correo": correo,
+            "correoElectronico": correo,
+            "contrasena": contrasena,
+            "fotoPerfil": fotoPerfil,
+            "domicilio": domicilio,
             "fechaNacimiento": fechaNacimiento,
-            "cuil": cuil,
-            "telefono": telefono,
-            "tipoUsuario": tipoUsuario
         }),
-    }
+    } 
     try 
     { 
         const response = await fetch

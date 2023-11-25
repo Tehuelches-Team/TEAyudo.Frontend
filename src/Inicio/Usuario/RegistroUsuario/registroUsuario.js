@@ -1,16 +1,19 @@
-import postUsuario from "../../../Services/usuarioService";
+import postTutor from "../../../Services/TutorService.js";
+import postUsuario from "../../../Services/usuarioService.js";
 
 document.getElementById("boton").addEventListener("click", async() =>
 {
-    // let nombre = document.getElementById("nombre").value;
-    // let apellido = document.getElementById("apellido");
-    // let correo = document.getElementById("correo");
+    let nombre = document.getElementById("nombre");
+    let apellido = document.getElementById("apellido");
+    let correo = document.getElementById("correo");
     let fechaNacimiento = document.getElementById("fechaNacimiento");
     let cuil = document.getElementById("cuil");
-    let telefono = document.getElementById("telefono");
+    let domicilio = document.getElementById("domicilio");
     let formulario = document.querySelector(".formulario");
     // let tipoUsuario = document.getElementById("tipoUsuario");
     let tipoUsuarioInputs = document.querySelectorAll('input[name="tipoUsuario"]');
+    let fotoPerfil = document.querySelector(".imagen");
+    let contrasena = "asfsafsac";
     let noSeleccionado = true;
     let numUsuario;
     for (var i = 0; i < tipoUsuarioInputs.length; i++) {
@@ -19,7 +22,7 @@ document.getElementById("boton").addEventListener("click", async() =>
             numUsuario = i;
         }
     };
-    if (fechaNacimiento === "" || cuil.value === "" || telefono.value.length != 10 || noSeleccionado)
+    if (fechaNacimiento === "" || cuil.value === "" || domicilio === "" || noSeleccionado)
     {
         if (fechaNacimiento === "")
         {
@@ -29,17 +32,11 @@ document.getElementById("boton").addEventListener("click", async() =>
         else if (cuil == "")
         {
             cuil.setCustomValidity('El cuil es obligatorio');
-        } 
-        
-        else if(telefono.value.length < 10)
-        {
-            telefono.setCustomValidity('El número de telefono debe tener menos de 10 dígitos'); 
-        }  
-        
-        else if(telefono.value.length > 10)
-        {
-            telefono.setCustomValidity('El numero de telefono debe tener 10 dígitos'); 
         }   
+
+        else if(domicilio === ""){
+            domicilio.setCustomValidity('El domicilio es obligatorio');
+        }
 
         else if(noSeleccionado)
         {
@@ -64,9 +61,15 @@ document.getElementById("boton").addEventListener("click", async() =>
 //   "fechaNacimiento": "12/08/1990",
 //   "estadoUsuarioId": 0
 // }
-        let response = await postUsuario(numOculto, usuario, cantidad); //Consultar status
-        let responseJson = JSON.stringify(response);
-        window.location.href = `./ticket.html?response=${encodeURIComponent(responseJson)}`;
-
-    }; //De acuerdo al tipo de usuario se le debe de enviar la id de usuario.
+    let response = await postUsuario(nombre.value, apellido.value, correo.value, fechaNacimiento.value, cuil.value, domicilio.value, "rfasfasfasfas", contrasena); //Consultar status
+    let id = response.id;
+    if(tipoUsuarioInputs[numUsuario].value == "acompanante"){
+        window.location.href = `../Acompanante/RegistroAcompanante/registroAcompanante.html=${id}`; //Post acompanante
+    }
+    if(tipoUsuarioInputs[numUsuario].value == "tutor"){
+        postTutor(id);
+        window.location.href = `../Tutor/RegistroPaciente/registroPaciente.html=${id}`; //Post tutor
+    }
+    
+    };
 });
