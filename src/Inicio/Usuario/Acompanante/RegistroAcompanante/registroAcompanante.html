@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> 
-	<link rel="stylesheet" href="registroAcompanante.css">
+	<link rel="stylesheet" href="./registroAcompanante.css">
     <title>Document</title>
 </head>
 <body>
@@ -15,33 +15,56 @@
                 <form class="formulario">
                     <label class="label" for="nombre">
                         <span>Localización laboral:</span>
-                        <input class="input-texto" type="text" placeholder="" id="" name="" required disabled>
+                        <input class="input-texto" type="text" placeholder="" id="localizacion" name="" required disabled>
                     </label>
                     <label class="label" for="apellido">
                         <span>Obras sociales:</span>
-                        <input class="input-texto" type="text" placeholder="" id="" name="" required>
+                        <select class="desplegable">
+                        <option value="" selected>Seleccione género...</option>
+                        <option value="1">OSDE</option>
+                        <option value="2">Swiss Medical</option>
+                        <option value="3">Galeno</option>
+                        <option value="4">Medicus</option>
+                        <option value="5">OSDEPYM</option>
+                        <option value="6">OSPE</option>
+                        <option value="7">OSSEG</option>
+                        <option value="8">OSUT</option>
+                        <option value="9">OSUTHGRA</option>
+                        <option value="10">OSFFENTOS</option>
+                        <option value="11">OSFATUN</option>
+                        <option value="12">OSPEPBA</option>
+                        <option value="13">OSPSA</option>
+                        <option value="14">OSPS</option>
+                        <option value="15">OSPIA</option>
+                        </select>
+                        <!-- <input class="input-texto" type="text" placeholder="" id="obraSociales" name="" required> -->
                     </label>
+                    <div class="obraSociales-seleccionadas">
+                        <div class="obraSocial-escogida">OSDE</div>
+                        <div class="obraSocial-escogida">Galeno</div>
+                        <div class="obraSocial-escogida">OSUT</div>
+                    </div>
                     <label class="label" for="correo">
                         <span>Telefono laboral:</span>
-                        <input class="input-texto" type="text" placeholder="" id="" name="" required>
+                        <input class="input-texto" type="text" placeholder="" id="telefono" name="" required>
                     </label>
                     <label class="label" for="fechaNacimiento">
                         <span>Documentación:</span>
-                        <input class="input-texto" type="text" id="fechaNacimiento" name="fechaNacimiento" required>
+                        <input class="input-texto" type="file" id="fechaNacimiento" name="fechaNacimiento" accept="application/pdf" required>
                     </label>
                     <label class="label">
                         <span>Modalidad:</span>
                         <div class="switch-container">
-                            <label for="tutor">Escolar</label>
-                            <input type="radio" id="tutor" name="tipoUsuario" value="tutor">
-                            <label for="acompanante">Domiciliario</label>
-                            <input type="radio" id="acompanante" name="tipoUsuario" value="acompanante">
+                            <label for="Escolar">Escolar</label>
+                            <input type="radio" id="Escolar" name="tipoUsuario" value="Escolar">
+                            <label for="Domiciliario">Domiciliario</label>
+                            <input type="radio" id="Domiciliario" name="tipoUsuario" value="Domiciliario">
                         </div>
                     </label>
                     <label class="label">
                         <label for="descripcion">Descripcion:</label>
                     </label>
-                    <textarea class="textarea" name="descripcion" placeholder="Descripcion de la propuesta"></textarea>
+                    <textarea id="descripcion" class="textarea" name="descripcion" placeholder="Descripcion de la propuesta"></textarea>
                 </form>
             </div>
         </div>
@@ -55,25 +78,32 @@
                 <div class="celda">Jueves</div>
                 <div class="celda">Viernes</div>
                 <div class="celda">Sábado</div>
-                <div class="celda" onclick="cambiarColor(this)">Mañana</div>
-                <div class="celda celda-clic celda-izquierda-sup" onclick="cambiarColor(this)"></div>
-                <div class="celda celda-clic" onclick="cambiarColor(this)" ></div>
-                <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
-                <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
-                <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
-                <div class="celda celda-clic celda-derecha-sup" onclick="cambiarColor(this)"></div>
-                <div class="celda" onclick="cambiarColor(this)">Tarde</div>
-                <div class="celda celda-clic celda-izquierda-inf" onclick="cambiarColor(this)"></div>
-                <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
-                <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
-                <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
-                <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
-                <div class="celda celda-clic celda-derecha-inf" onclick="cambiarColor(this)"></div>
+                <div class="celda"">Mañana</div>
+                <div id="1" class="celda celda-clic celda-izquierda-sup" onclick="cambiarColor(this)"></div>
+                <div id="2" class="celda celda-clic" onclick="cambiarColor(this)" ></div>
+                <div id="3" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="4" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="5" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="6" class="celda celda-clic celda-derecha-sup" onclick="cambiarColor(this)"></div>
+                <div class="celda"">Tarde</div>
+                <div id="7" class="celda celda-clic celda-izquierda-inf" onclick="cambiarColor(this)"></div>
+                <div id="8" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="9" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="10" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="11" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="12" class="celda celda-clic celda-derecha-inf" onclick="cambiarColor(this)"></div>
             </div>
         </div>
         <div>
-            <button class="btn boton-formulario btn-primary" type="button">Confirmar</button>
+            <button id="boton" class="btn boton-formulario btn-primary" type="button">Confirmar</button>
         </div>
     </main>
+    <script>
+        function cambiarColor(elemento) {
+            elemento.classList.toggle('celda-verde');
+        }
+    </script>
+    <script type="module" src="registroAcompanante.js"></script>
 </body>
+
 </html>
