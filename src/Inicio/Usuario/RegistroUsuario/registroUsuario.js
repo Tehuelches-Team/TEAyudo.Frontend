@@ -49,10 +49,10 @@ document.getElementById("boton").addEventListener("click", async() =>
     {
         alert(tipoUsuarioInputs[numUsuario].value); 
         	
-    let response = await postUsuario(nombre.value, apellido.value, correo.value, fechaNacimiento.value, cuil.value, domicilio.value, "rfasfasfasfas", contrasena); //Consultar status
-    let usuarioId = response.usuarioId;
-    if(tipoUsuarioInputs[numUsuario].value == "acompanante"){
-        window.location.href = `../Acompanante/RegistroAcompanante/registroAcompanante.html?usuarioId=${usuarioId}`; //Post acompanante
+        let response = await postUsuario(nombre.value, apellido.value, correo.value, fechaNacimiento.value, cuil.value, domicilio.value, "rfasfasfasfas", contrasena); //Consultar status
+        let usuarioId = response.usuarioId;
+        if(tipoUsuarioInputs[numUsuario].value == "acompanante"){
+            window.location.href = `../Acompanante/RegistroAcompanante/registroAcompanante.html?usuarioId=${usuarioId}`; //Post acompanante
     }
     if(tipoUsuarioInputs[numUsuario].value == "tutor"){
         let tutorResponse = await postTutor(usuarioId);
