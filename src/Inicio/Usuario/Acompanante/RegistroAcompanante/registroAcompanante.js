@@ -14,7 +14,6 @@ window.onload = function() {
 document.getElementById("boton").addEventListener("click", async() =>
 {
     let telefono = document.getElementById("telefono");
-    let descripcion = document.getElementById("descripcion").value;
     let formulario = document.querySelector(".formulario");
     let obrasocial = document.querySelectorAll(".obraSocial");
     let localizacion = document.getElementById("localizacion");
@@ -23,24 +22,40 @@ document.getElementById("boton").addEventListener("click", async() =>
     let escolar = document.getElementById("escolar");
     let domiciliario = document.getElementById("domiciliario");
     let documentacion = document.getElementById("documentacion");
+    let contenedorObraSociales = document.getElementById("obraSociales-seleccionadas");
     
+    domiciliario.setCustomValidity('');
+    document.getElementById("select").setCustomValidity('');
+    telefono.setCustomValidity('');
+    domiciliario.setCustomValidity('');
+
+
+
     if(localizacion.value === "")
     {
       domiciliario.setCustomValidity('La seleccion de un campo es obligatorio'); 
       formulario.reportValidity(); 
     }
+
+    else if(contenedorObraSociales.firstChild == null){
+      document.getElementById("select").setCustomValidity('El campo de experiencia debe de ser obligatorio');
+      formulario.reportValidity();
+    }
+
+    else if(telefono.value.length != 10)
+    {
+        telefono.setCustomValidity('El numero de telefono debe tener 10 dígitos'); 
+        formulario.reportValidity(); 
+    }
+
     else if(!escolar.checked && !domiciliario.checked)
     {
       domiciliario.setCustomValidity('La seleccion de un campo es obligatorio'); 
       formulario.reportValidity(); 
     }
-    else if(telefono.value.length != 10)
-    {
-        telefono.setCustomValidity('El numero de telefono debe tener 10 dígitos'); 
-        formulario.reportValidity(); 
-    }  
+      
     else if(experiencia.value === ""){
-        experiencia.setCustomValidity('El campo de experiencia debe de ser obligatorio');
+        document.getElementById("experiencia-info").setCustomValidity('El campo de experiencia debe de ser obligatorio');
         formulario.reportValidity();
     }
 
@@ -48,6 +63,7 @@ document.getElementById("boton").addEventListener("click", async() =>
         documentacion.setCustomValidity('El campo de experiencia debe de ser obligatorio');
         formulario.reportValidity();
     }
+
     else
     {
         let disponibilidad = cargarSeleccion();
@@ -89,13 +105,6 @@ document.getElementById("select").addEventListener("change", async(e) =>
     });
   }
 });
-
-
-
-
-
-
-
 
 function cargarSeleccion() {
   let agenda = [];

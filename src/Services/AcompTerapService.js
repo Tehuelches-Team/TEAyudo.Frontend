@@ -123,7 +123,7 @@ export async function CargarAT(especialidad, disponibilidad, obrasocial, zonaLab
     ;
     try{
         const response = await fetch (`https://localhost:7235/api/Acompanantes/Filtros?Especialidad=${especialidad}&Disponibilidad=${disponibilidad}&ObraSocial=${obrasocial}&ZonaLaboral=${zonaLaboral}`, config);
-        return response; 
+        return response;
     }catch(error){
         console.log(error);
     }

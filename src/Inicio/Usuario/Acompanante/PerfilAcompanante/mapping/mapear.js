@@ -45,13 +45,12 @@ export async function mapearContenedor2(objeto)
 
 export async function mapearContenedor3(objeto)
 {
+    const obrasSociales = objeto.map(ob => `<li>${ob.nombre}</li>`).join('');
     return  `
             <div class="contenedor-izquierdo-obrasSociales">
                 <h3>Obras sociales aceptadas</h3>
                 <ul class="lista-obras-sociales">
-                    <li>OSECAC</li>
-                    <li>PAMI</li>
-                    <li>OSUPLAD</li>
+                    ${obrasSociales}
                 </ul>
             </div>
             `
@@ -64,7 +63,7 @@ export async function mapearContenedor4(objeto)
                 <img class="imagen" src="${objeto.fotoPerfil}" alt="Descripción de la imagen">
                 <h3>${objeto.nombre} ${objeto.apellido}</h3>
                 <h4>Acompañante Terapeutica</h4>
-                <button type="button" class="btn btn-primary">Generar propuesta</button>
+                <button id="propuesta-boton" type="button" class="btn btn-primary">Generar propuesta</button>
             </div>
             <img class="imagen-mapa" src="../../../img/mapa.png" />
             `

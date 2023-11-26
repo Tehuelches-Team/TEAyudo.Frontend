@@ -19,3 +19,4 @@ export default async function funciones (titulo, fecha, GeneroId){
       console.log(error);
     }
 }
+

@@ -20,6 +20,7 @@
                     </label>
                     <label class="label" for="apellido">
                         <span>Obras sociales:</span>
+                        <input type="hidden" id="obraSociales-info">
                         <select class="desplegable" id="select">
                             <option value="" selected>Seleccione las obras sociales...</option>
                             <option value="OSDE" data-info="1">OSDE</option>
@@ -45,10 +46,6 @@
                         <span>Telefono laboral:</span>
                         <input class="input-texto" type="text" placeholder="" id="telefono" name="" required>
                     </label>
-                    <label class="label" for="experiencia">
-                        <span>Cuentanos sobre tus experiencias:</span>
-                        <input class="input-texto" type="text" id="experiencia" name="experiencia" accept="" required>
-                    </label>
                     <label class="label" for="documentacion">
                         <span>Documentación:</span>
                         <input class="input-texto" type="file" id="documentacion" name="documentacion" accept="application/pdf" required>
@@ -57,15 +54,16 @@
                         <span>Modalidad:</span>
                         <div class="switch-container">
                             <label for="escolar">Escolar</label>
-                            <input type="radio" id="escolar" name="acompananteEscolar" value="escolar">
+                            <input type="checkbox" id="escolar" name="acompananteEscolar" value="escolar">
                             <label for="domiciliario">Domiciliario</label>
-                            <input type="radio" id="domiciliario" name="acompananteDomiciliario" value="domiciliario">
+                            <input type="checkbox" id="domiciliario" name="acompananteDomiciliario" value="domiciliario">
                         </div>
                     </label>
                     <label class="label">
-                        <label for="descripcion">Descripcion:</label>
+                        <label for="experiencia">Acerca de sus experiencias:</label>
                     </label>
-                    <textarea id="descripcion" class="textarea" name="descripcion" placeholder="Descripcion de la propuesta"></textarea>
+                    <input type="hidden" id="experiencia-info">
+                    <textarea id="experiencia" class="textarea" name="experiencia" placeholder="Acerca de mi" required></textarea>
                 </form>
             </div>
         </div>

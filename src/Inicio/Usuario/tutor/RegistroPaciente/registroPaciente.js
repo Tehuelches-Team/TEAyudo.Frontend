@@ -1,14 +1,16 @@
-import { postPaciente } from "../../../../../Services/TutorService.js";
+import { postPaciente } from "../../../../Services/TutorService.js";
+
+var tutorId = 0;
 
 window.onload = async function ()  {
     const urlParams = new URLSearchParams(window.location.search);
-    const dato = urlParams.get('tutorId');
-    document.getElementById('ocultoTutorId').value = dato;
+    tutorId = urlParams.get('tutorId');
+    document.getElementById('ocultoTutorId').value = tutorId;
 };
 
-document.getElementById("botonRegistrarPaciente").addEventListener("click", async() =>
+document.getElementById("RegistraPaciente").addEventListener("click", async() =>
 {
-    let formulario = await document.getElementById('formularioRegistroPaciente');
+    let formulario = document.getElementById('formularioRegistroPaciente');
 
     let tutorIdValue = document.getElementById('ocultoTutorId').value;
     let nombreObjet = document.getElementById('nombre');
@@ -65,7 +67,7 @@ document.getElementById("botonRegistrarPaciente").addEventListener("click", asyn
     }  
     else
     {
-        let result = postPaciente(tutorIdValue, nombreObjet.value, apellidoObjet.value, fechaNacimientoObjet.value, diagnosticoObjet.value, arraySexo[numSexo].value, cudObjet.value);
-        window.location.href = `../../../index.html`;
+        await postPaciente(tutorIdValue, nombreObjet.value, apellidoObjet.value, fechaNacimientoObjet.value, diagnosticoObjet.value, arraySexo[numSexo].value, cudObjet.value);
+        window.location.href = `../tutorBusqueda/tutorBusqueda.html?tutorId=${tutorId}`;
     }
 });

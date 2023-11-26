@@ -1,9 +1,12 @@
 import { mapearContenedor1, mapearContenedor2, mapearContenedor3, mapearContenedor4 } from "./mapping/mapear.js";
 import { getAcompanante } from "../../../../Services/AcompTerapService.js";
 
+var tutorId = "";
+
 window.onload = async function ()  {
     const urlParams = new URLSearchParams(window.location.search);
     const acompananteId = urlParams.get('acompananteId');
+    tutorId = urlParams.get('tutorId');
     // let peli = await peliculaById(dato);
     // await obtenerPelicula(peli);
     // await botonesFunciones();
@@ -21,12 +24,16 @@ const mapearpagina = async (result) => {
     let contenedor4 = document.getElementById("contenedor-derecho");
     contenedor1.innerHTML += await mapearContenedor1(result);
     contenedor2.innerHTML += await mapearContenedor2(result);
-    contenedor3.innerHTML += await mapearContenedor3(result);
+    contenedor3.innerHTML += await mapearContenedor3(result.obrasSociales);
     contenedor4.innerHTML += await mapearContenedor4(result);
     await pintarCeldas(result.disponibilidad); 
+    let boton = document.getElementById("propuesta-boton");
+    boton.addEventListener( "click", (e) => {
+        e.preventDefault();
+        window.location.href = `../../../Propuesta/propuesta.html?acompananteId=${result.acompananteId}&tutorId=${tutorId}`; 
+});
+
 };
-
-
 
 const pintarCeldas = async (cadena) => {
     let arrayCeldas = document.querySelectorAll('.celda-clic'); 
