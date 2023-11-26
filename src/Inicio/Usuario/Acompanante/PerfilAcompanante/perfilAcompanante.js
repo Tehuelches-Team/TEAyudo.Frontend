@@ -9,6 +9,7 @@ window.onload = async function ()  {
     // await botonesFunciones();
     // let response = await funciones("","","");
     // await mapearFunciones(response);
+    let dato;
     let result = await getAcompanante(dato);
     await mapearpagina(result);
 };
@@ -23,26 +24,29 @@ const mapearpagina = async (result) => {
     contenedor2.innerHTML += await mapearContenedor2(result);
     contenedor3.innerHTML += await mapearContenedor3(result);
     contenedor4.innerHTML += await mapearContenedor4(result);
-
-
-    
+    await pintarCeldas(result.Disponibilidad); 
 };
 
 
 
-const arrayId = function (cadena) => {
-    const arreglo = cadena.split("").map(Number);
-    const indices = [];
-  
-    arreglo.forEach((valor, indice) => {
-      if (valor === 1) {
-        if (indice < 6) {
-          indices.push(indice + 1); // Mañana
-        } else {
-          indices.push(indice + 1 - 6 + 7); // Tarde
+const pintarCeldas = async (cadena) => {
+    let arrayCeldas = document.querySelectorAll('.celda-clic'); 
+    for (let i = 0; i < array.length; i++) {
+        if (cadena[i] === "0")
+        {
+            if(arrayCeldas[i].classList.contains("celda-verde"))
+            {
+                arrayCeldas[i].classList.remove("celda-verde");
+                arrayCeldas[i].classList.add("celda-clic");
+            }    
         }
-      }
-    });
-  
-    return indices;
+        else
+        {
+            if(arrayCeldas[i].classList.contains("celda-clic"))
+            {
+                arrayCeldas[i].classList.remove("celda-clic");
+                arrayCeldas[i].classList.add("celda-verde");
+            }
+        }    
+    }
 }

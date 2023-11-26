@@ -1,4 +1,4 @@
-import { CargarAT } from "../../../../../Services/AcompTerapService.js";
+import { CargarAT } from "../../../../Services/AcompTerapService.js";
 import {mappingAt, mappingResult } from "./mapping/cartaTutor.js";
 
 window.onload = async function ()  {
@@ -33,8 +33,13 @@ const mapearAcompanantes = async (response) => {
                         };
                     }
                 }).join("");
-                contenedor.innerHTML = atMapeados;    
+                contenedor.innerHTML = atMapeados; 
             }
         }
     }
+    let ats = document.querySelectorAll('resultado');
+    ats.addEventListener("click", () => {
+        window.location.href = `../../../..`; //Mandar a la página de roco.
+    });
 };
+

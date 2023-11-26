@@ -1,4 +1,4 @@
-import { postPaciente } from "../../../../Services/TutorService.js";
+import { postPaciente } from "../../../../../Services/TutorService.js";
 
 window.onload = async function ()  {
     const urlParams = new URLSearchParams(window.location.search);

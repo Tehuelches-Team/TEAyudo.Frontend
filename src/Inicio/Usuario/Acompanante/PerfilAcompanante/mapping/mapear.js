@@ -1,12 +1,12 @@
 export async function mapearContenedor1(objeto)
 {
     return  `
-            <h2 class="h2">Sobre ${objeto.nombre} ${objeto.apellido} Natalia Perez</h2>
+            <h2 class="h2">Sobre ${objeto.nombre} ${objeto.apellido}</h2>
             <div class="renglon-especialidad">
                 <span class="especialidad">Escolar</span>
                 <span class="especialidad">Domiciliario</span>
             </div>
-            <p>${objeto.exériencia}.</p>
+            <p>${objeto.experiencia}.</p>
             `
 }
 
