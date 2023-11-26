@@ -1,4 +1,4 @@
-export default function mappingAt(fotoPerfil, nombre, apellido, domicilio ,escolar, domiciliario)
+export function mappingAt(fotoPerfil, nombre, apellido, domicilio, especialidad1, especialidad2, experiencia)
 {
     return  `
             <div class="resultado">
@@ -8,11 +8,21 @@ export default function mappingAt(fotoPerfil, nombre, apellido, domicilio ,escol
                 </div>
                 <div class="descripcion">
                     <div class="perfil-AT-bloque-tags">
-                        <span class="otro-elemento-en-linea">${domicilio}</span>
-                        <span class="otro-elemento-en-linea">${escolar}</span>
-                        <span class="otro-elemento-en-linea">${domiciliario}</span>
+                    <br><span class="otro-elemento-en-linea">${domicilio}</span>
+                    <br><span class="otro-elemento-en-linea">${especialidad1}</span>
+                    <br><span class="otro-elemento-en-linea">${especialidad2}</span>
                     </div>
+                    <p class="descripcion">${experiencia}</p>
                 </div>
             </div>
             `
-}      
+}
+
+export function mappingResult(cant){
+    return `<h3>${cant} acompañantes terapéuticos disponibles</h3>`
+}
+
+export default{
+    mappingAt,
+    mappingResult
+}

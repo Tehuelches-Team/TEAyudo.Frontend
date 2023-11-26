@@ -41,3 +41,22 @@ const mapearFunciones = async () => {
     //     console.log("Error de conexion");
     // }
 };
+
+
+
+const arrayId = function (cadena) => {
+    const arreglo = cadena.split("").map(Number);
+    const indices = [];
+  
+    arreglo.forEach((valor, indice) => {
+      if (valor === 1) {
+        if (indice < 6) {
+          indices.push(indice + 1); // Mañana
+        } else {
+          indices.push(indice + 1 - 6 + 7); // Tarde
+        }
+      }
+    });
+  
+    return indices;
+}
