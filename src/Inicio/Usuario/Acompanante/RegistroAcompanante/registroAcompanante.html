@@ -20,37 +20,33 @@
                     </label>
                     <label class="label" for="apellido">
                         <span>Obras sociales:</span>
-                        <select class="desplegable">
-                            <option value="" selected>Seleccione género...</option>
-                            <option value="1">OSDE</option>
-                            <option value="2">Swiss Medical</option>
-                            <option value="3">Galeno</option>
-                            <option value="4">Medicus</option>
-                            <option value="5">OSDEPYM</option>
-                            <option value="6">OSPE</option>
-                            <option value="7">OSSEG</option>
-                            <option value="8">OSUT</option>
-                            <option value="9">OSUTHGRA</option>
-                            <option value="10">OSFFENTOS</option>
-                            <option value="11">OSFATUN</option>
-                            <option value="12">OSPEPBA</option>
-                            <option value="13">OSPSA</option>
-                            <option value="14">OSPS</option>
-                            <option value="15">OSPIA</option>
+                        <select class="desplegable" id="select">
+                            <option value="" selected>Seleccione las obras sociales...</option>
+                            <option value="OSDE" data-info="1">OSDE</option>
+                            <option value="Swiss Medical" data-info="2">Swiss Medical</option>
+                            <option value="Galeno" data-info="3">Galeno</option>
+                            <option value="Medicus" data-info="4">Medicus</option>
+                            <option value="OSDEPYM" data-info="5">OSDEPYM</option>
+                            <option value="OSPE" data-info="6">OSPE</option>
+                            <option value="OSSEG" data-info="7">OSSEG</option>
+                            <option value="OSUT" data-info="8">OSUT</option>
+                            <option value="OSUTHGRA" data-info="9">OSUTHGRA</option>
+                            <option value="OSFFENTOS" data-info="10">OSFFENTOS</option>
+                            <option value="OSFATUN" data-info="11">OSFATUN</option>
+                            <option value="OSPEPBA" data-info="12">OSPEPBA</option>
+                            <option value="OSPSA" data-info="13">OSPSA</option>
+                            <option value="OSPS" data-info="14">OSPS</option>
+                            <option value="OSPIA" data-info="15">OSPIA</option>
                         </select>
                         <!-- <input class="input-texto" type="text" placeholder="" id="obraSociales" name="" required> -->
                     </label>
-                    <!-- <div class="obraSociales-seleccionadas">
-                        <div class="obraSocial-escogida">OSDE</div>
-                        <div class="obraSocial-escogida">Galeno</div>
-                        <div class="obraSocial-escogida">OSUT</div>
-                    </div> -->
+                    <div id="obraSociales-seleccionadas"></div>
                     <label class="label" for="correo">
                         <span>Telefono laboral:</span>
                         <input class="input-texto" type="text" placeholder="" id="telefono" name="" required>
                     </label>
                     <label class="label" for="experiencia">
-                        <span>Experiencia (Años):</span>
+                        <span>Cuentanos sobre tus experiencias:</span>
                         <input class="input-texto" type="text" id="experiencia" name="experiencia" accept="" required>
                     </label>
                     <label class="label" for="documentacion">

@@ -2,14 +2,14 @@ import { mapearContenedor1, mapearContenedor2, mapearContenedor3, mapearContened
 import { getAcompanante } from "../../../../Services/AcompTerapService.js";
 
 window.onload = async function ()  {
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const dato = urlParams.get('dato');
+    const urlParams = new URLSearchParams(window.location.search);
+    const acompananteId = urlParams.get('acompananteId');
     // let peli = await peliculaById(dato);
     // await obtenerPelicula(peli);
     // await botonesFunciones();
     // let response = await funciones("","","");
     // await mapearFunciones(response);
-    let result = await getAcompanante(4);
+    let result = await getAcompanante(acompananteId);
     await mapearpagina(result);
 };
 

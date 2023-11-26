@@ -20,26 +20,25 @@ const mapearAcompanantes = async (response) => {
             {
                 let atMapeados = result.map((at) => {
                     if (at.especialidad.length == 2){
-                        return mappingAt(at.fotoPerfil,at.nombre,at.apellido,at.domicilio,at.especialidad[0].descripcion,at.especialidad[1].descripcion,at.experiencia);
+                        return mappingAt(at.acompananteId,at.fotoPerfil,at.nombre,at.apellido,at.domicilio,at.especialidad[0].descripcion,at.especialidad[1].descripcion,at.experiencia);
                     };
                     if(at.especialidad.length == 1) {
                         
-                        if(at.especialidad[0].descripcion === "Acompañamiento Escolar"){
-                            return mappingAt(at.fotoPerfil,at.nombre,at.apellido,at.domicilio,at.especialidad[0].descripcion,"",at.experiencia);
+                        if(at.especialidad.length == 1){
+                            return mappingAt(at.acompananteId,at.fotoPerfil,at.nombre,at.apellido,at.domicilio,at.especialidad[0].descripcion,"",at.experiencia);
                         };
 
-                        if(at.especialidad[0].descripcion === "Cuidado domiciliario"){
-                            return mappingAt(at.fotoPerfil,at.nombre,at.apellido,at.domicilio,at.especialidad[0].descripcion,"",at.experiencia);
-                        };
                     }
                 }).join("");
                 contenedor.innerHTML = atMapeados; 
             }
         }
     }
-    let ats = document.querySelectorAll('resultado');
-    ats.addEventListener("click", () => {
-        window.location.href = `../../../..`; //Mandar a la página de roco.
+    let ats = document.querySelectorAll('.resultado');
+    ats.forEach((at) => {
+        at.addEventListener("click", () => {
+            window.location.href = `../../Acompanante/PerfilAcompanante/perfilAcompanante.html?acompananteId=${at.id}`; //Mandar a la página de roco.
+        });
     });
 };
 

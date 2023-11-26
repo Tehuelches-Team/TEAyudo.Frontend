@@ -1,4 +1,5 @@
-import {postAcompanante,postEspecialidad} from "../../../../Services/AcompTerapService.js";
+import {postAcompanante,postEspecialidad, postObraSocial} from "../../../../Services/AcompTerapService.js";
+import mappingObraSocial from "./mapping/obraSocial.js";
 
 window.onload = function() {
   const urlParams = new URLSearchParams(window.location.search);  
@@ -15,7 +16,7 @@ document.getElementById("boton").addEventListener("click", async() =>
     let telefono = document.getElementById("telefono");
     let descripcion = document.getElementById("descripcion").value;
     let formulario = document.querySelector(".formulario");
-    let obrasocial = document.querySelector(".obrasocial");
+    let obrasocial = document.querySelectorAll(".obraSocial");
     let localizacion = document.getElementById("localizacion");
     let usuarioId = document.getElementById("oculto").value;
     let experiencia = document.getElementById("experiencia");
@@ -60,25 +61,41 @@ document.getElementById("boton").addEventListener("click", async() =>
           await postEspecialidad(acompananteId, 2);
         }
         //post obra social
+        obrasocial.forEach( async ob => {
+          console.log(ob.getAttribute("data-info"));
+          await postObraSocial(acompananteId, ob.getAttribute("data-info"));
+        });
     }
 });
 
-opciones.addEventListener('change', function() {
-  const opcionSeleccionada = opciones.options[opciones.selectedIndex].text;
-  
-  // Crear un nuevo elemento para agregar al contenedor
-  const nuevoElemento = document.createElement('div');
-  nuevoElemento.textContent = opcionSeleccionada;
 
-  // Agregar el elemento al contenedor
-  contenedor.appendChild(nuevoElemento);
+document.getElementById("select").addEventListener("change", async(e) =>
+{
+  let contenedor = document.getElementById("obraSociales-seleccionadas");
+  let opcionSeleccionada = e.target.options[e.target.selectedIndex];
+  let unaObraSocial = opcionSeleccionada.value;
+  let id = opcionSeleccionada.getAttribute("data-info");
+  let existe = document.getElementById(unaObraSocial);
+  if (existe === null && unaObraSocial !== "" )
+  {
+    contenedor.innerHTML += await mappingObraSocial(unaObraSocial, id);  
+    let divs = document.querySelectorAll(".obraSocial");
+    divs.forEach(element => {
+      element.addEventListener("click", (e) => 
+        {
+          contenedor.removeChild(e.target);
+        }
+      );
+    });
+  }
 });
 
-const opciones = document.getElementById('opciones');
-const contenedor = document.getElementById('contenedor');
-document.getElementById("boton").addEventListener("click", function () {
-    
-});
+
+
+
+
+
+
 
 function cargarSeleccion() {
   let agenda = [];

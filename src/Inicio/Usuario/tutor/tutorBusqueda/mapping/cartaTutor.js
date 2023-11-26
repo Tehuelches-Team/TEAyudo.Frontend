@@ -1,7 +1,7 @@
-export function mappingAt(fotoPerfil, nombre, apellido, domicilio, especialidad1, especialidad2, experiencia)
+export function mappingAt(id,fotoPerfil, nombre, apellido, domicilio, especialidad1, especialidad2, experiencia)
 {
     return  `
-            <div class="resultado">
+            <div id=${id} class="resultado">
                 <img class="imagen" src="${fotoPerfil}" alt="Descripción de la imagen">
                 <div class="nombre">
                     ${nombre} ${apellido}

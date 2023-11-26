@@ -85,6 +85,34 @@ export async function postEspecialidad(acompananteId, especialidadId)
     }
 };
 
+export async function postObraSocial(acompananteId, obraSocialId)
+{
+    let config = {
+        method: 'POST',
+        headers: 
+        {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "acompananteId": acompananteId,
+            "obraSocialId": obraSocialId
+        }),
+    }
+    try 
+    { 
+        const response = await fetch
+        (
+            `https://localhost:7235/api/Acompanantes/Relacion/Acompanante/ObraSocial`, config
+        );
+        let result = await response.json();
+        return result;
+    }
+    catch (error) 
+    {
+        console.log(error);
+    }
+};
+
 export async function CargarAT(especialidad, disponibilidad, obrasocial, zonaLaboral){
     const config = {
         method: 'GET',
@@ -107,5 +135,6 @@ export default {
     getAcompanante,
     postAcompanante,
     postEspecialidad,
+    postObraSocial,
     CargarAT,
 };

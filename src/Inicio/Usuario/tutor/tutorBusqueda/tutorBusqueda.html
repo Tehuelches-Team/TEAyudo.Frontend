@@ -10,10 +10,31 @@
     <div class="contenedor">
         <div class="bloque-busqueda">
             <div class="input-texto">
-                <input type="text" placeholder="Ingrese la especialidad">
+                <select class="desplegable" id="select">
+                    <option value="" selected>Seleccione la especialidad...</option>
+                    <option value="Acompañamiento Escolar" data-info="1">Acompañamiento Escolar</option>
+                    <option value="Cuidado domiciliario" data-info="2">Cuidado domiciliario</option>
+                </select>   
             </div>
             <div class="input-texto">
-                <input type="text" placeholder="Ingrese la obra social">
+                <select class="desplegable" id="select">
+                    <option value="" selected>Seleccione las obras sociales...</option>
+                    <option value="OSDE" data-info="1">OSDE</option>
+                    <option value="Swiss Medical" data-info="2">Swiss Medical</option>
+                    <option value="Galeno" data-info="3">Galeno</option>
+                    <option value="Medicus" data-info="4">Medicus</option>
+                    <option value="OSDEPYM" data-info="5">OSDEPYM</option>
+                    <option value="OSPE" data-info="6">OSPE</option>
+                    <option value="OSSEG" data-info="7">OSSEG</option>
+                    <option value="OSUT" data-info="8">OSUT</option>
+                    <option value="OSUTHGRA" data-info="9">OSUTHGRA</option>
+                    <option value="OSFFENTOS" data-info="10">OSFFENTOS</option>
+                    <option value="OSFATUN" data-info="11">OSFATUN</option>
+                    <option value="OSPEPBA" data-info="12">OSPEPBA</option>
+                    <option value="OSPSA" data-info="13">OSPSA</option>
+                    <option value="OSPS" data-info="14">OSPS</option>
+                    <option value="OSPIA" data-info="15">OSPIA</option>
+                </select>
             </div>
             <div class="input-texto">
                 <input type="text" placeholder="Ingrese la zona laboral">
@@ -51,34 +72,6 @@
         </div>
         <div id="cantidad-resultados"></div>
         <div class="contenedor-resultados" id="contenedor-resultados">
-			<!-- <div class="resultado">
-                <img class="imagen" src="../../../../img/foto-perfil.jpg" alt="Descripción de la imagen">
-                <div class="nombre">
-                    Juan Perez
-                </div>
-                <div class="descripcion">
-                    <div class="perfil-AT-bloque-tags">
-                        <span class="otro-elemento-en-linea">9KM</span>
-                        <span class="otro-elemento-en-linea">Escolar</span>
-                        <span class="otro-elemento-en-linea">Domiciliario</span>
-                    </div>
-                    <p class="descripcion">¡Con 7 años de experiencia como acompañante terapéutica, soy una apasionada del mundo de la magia que creamos junto a los niños con Trastorno del Espectro Autista (TEA)! Mi truco especial: mezclar empatía, comunicación y mucha diversión para hacer que cada día sea una aventura llena de crecimiento.</p>
-                </div>
-			</div> -->
-			<!-- <div class="resultado"> -->
-                <!-- <img class="imagen" src="../../../../img/foto-perfil.jpg" alt="Descripción de la imagen">
-                <div class="nombre">
-                    Juan Perez
-                </div>
-                <div class="descripcion">
-                    <div class="perfil-AT-bloque-tags">
-                        <span class="otro-elemento-en-linea">9KM</span>
-                        <span class="otro-elemento-en-linea">Escolar</span>
-                        <span class="otro-elemento-en-linea">Domiciliario</span>
-                    </div>
-                    <p class="descripcion">¡Con 7 años de experiencia como acompañante terapéutica, soy una apasionada del mundo de la magia que creamos junto a los niños con Trastorno del Espectro Autista (TEA)! Mi truco especial: mezclar empatía, comunicación y mucha diversión para hacer que cada día sea una aventura llena de crecimiento.</p>
-                </div> -->
-			<!-- </div> -->
 		</div>	  
     </div>
     <script>
