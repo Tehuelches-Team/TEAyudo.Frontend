@@ -7,11 +7,6 @@ window.onload = async function ()  {
     const urlParams = new URLSearchParams(window.location.search);
     const acompananteId = urlParams.get('acompananteId');
     tutorId = urlParams.get('tutorId');
-    // let peli = await peliculaById(dato);
-    // await obtenerPelicula(peli);
-    // await botonesFunciones();
-    // let response = await funciones("","","");
-    // await mapearFunciones(response);
     let result = await getAcompanante(acompananteId);
     await mapearpagina(result);
 };
