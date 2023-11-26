@@ -60,7 +60,26 @@ export async function postEspecialidad(acompananteId, especialidadId)
     }
 };
 
+export async function CargarAT(especialidad, disponibilidad, obrasocial, zonaLaboral){
+    const config = {
+        method: 'GET',
+        headers:{
+            'Content-Type':'application/json'
+        }
+    }
+    ;
+    try{
+        const response = await fetch (`https://localhost:7235/api/Acompanantes/Filtros?Especialidad=${especialidad}&Disponibilidad=${disponibilidad}&ObraSocial=${obrasocial}&ZonaLaboral=${zonaLaboral}`, config);
+        return response; 
+    }catch(error){
+        console.log(error);
+    }
+};
+
+
+
 export default {
     postAcompanante,
     postEspecialidad,
+    CargarAT,
 };

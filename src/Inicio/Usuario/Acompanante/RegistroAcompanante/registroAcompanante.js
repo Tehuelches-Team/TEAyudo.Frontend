@@ -6,7 +6,9 @@ window.onload = function() {
   document.getElementById("oculto").value = dato;
 };
 
-
+// function cambiarColor(elemento) {
+//   elemento.classList.toggle('celda-verde');
+// }
 
 document.getElementById("boton").addEventListener("click", async() =>
 {
@@ -62,9 +64,22 @@ document.getElementById("boton").addEventListener("click", async() =>
     }
 });
 
+opciones.addEventListener('change', function() {
+  const opcionSeleccionada = opciones.options[opciones.selectedIndex].text;
+  
+  // Crear un nuevo elemento para agregar al contenedor
+  const nuevoElemento = document.createElement('div');
+  nuevoElemento.textContent = opcionSeleccionada;
+
+  // Agregar el elemento al contenedor
+  contenedor.appendChild(nuevoElemento);
+});
+
+const opciones = document.getElementById('opciones');
+const contenedor = document.getElementById('contenedor');
 document.getElementById("boton").addEventListener("click", function () {
     
-  });
+});
 
 function cargarSeleccion() {
   let agenda = [];

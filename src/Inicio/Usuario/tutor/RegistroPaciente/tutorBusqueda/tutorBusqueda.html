@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tutorBusqueda.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="bloque-busqueda">
+            <div class="input-texto">
+                <input type="text" placeholder="Ingrese la especialidad">
+            </div>
+            <div class="input-texto">
+                <input type="text" placeholder="Ingrese la obra social">
+            </div>
+            <div class="input-texto">
+                <input type="text" placeholder="Ingrese la zona laboral">
+            </div>
+            <div class="separador-tabla-boton">
+                <div class="bloque-horarios-busqueda">
+                    <div class="tablaHorarios" id="tablaHorarios">
+                        <div class="celda"></div>
+                        <div class="celda">Lunes</div>
+                        <div class="celda">Martes</div>
+                        <div class="celda">Miércoles</div>
+                        <div class="celda">Jueves</div>
+                        <div class="celda">Viernes</div>
+                        <div class="celda">Sábado</div>
+                        <div class="celda" onclick="cambiarColor(this)">Mañana</div>
+                        <div class="celda celda-clic celda-izquierda-sup" onclick="cambiarColor(this)"></div>
+                        <div class="celda celda-clic" onclick="cambiarColor(this)" ></div>
+                        <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div class="celda celda-clic celda-derecha-sup" onclick="cambiarColor(this)"></div>
+                        <div class="celda" onclick="cambiarColor(this)">Tarde</div>
+                        <div class="celda celda-clic celda-izquierda-inf" onclick="cambiarColor(this)"></div>
+                        <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div class="celda celda-clic celda-derecha-inf" onclick="cambiarColor(this)"></div>
+                    </div>
+                </div>
+                <div  class="boton-busqueda">          
+                    <a href="#" class="boton-basico">Buscar Profecional</a>
+                </div>
+            </div>
+        </div>
+        <h3>6 acompañantes terapéuticos disponibles</h3>
+        <div class="contenedor-resultados" id="contenedor-resultados">
+			<div class="resultado">
+                <img class="imagen" src="../../../../img/foto-perfil.jpg" alt="Descripción de la imagen">
+                <div class="nombre">
+                    Juan Perez
+                </div>
+                <div class="descripcion">
+                    <div class="perfil-AT-bloque-tags">
+                        <span class="otro-elemento-en-linea">9KM</span>
+                        <span class="otro-elemento-en-linea">Escolar</span>
+                        <span class="otro-elemento-en-linea">Domiciliario</span>
+                    </div>
+                    <p class="descripcion">¡Con 7 años de experiencia como acompañante terapéutica, soy una apasionada del mundo de la magia que creamos junto a los niños con Trastorno del Espectro Autista (TEA)! Mi truco especial: mezclar empatía, comunicación y mucha diversión para hacer que cada día sea una aventura llena de crecimiento.</p>
+                </div>
+			</div>
+			<div class="resultado">
+                <!-- <img class="imagen" src="../../../../img/foto-perfil.jpg" alt="Descripción de la imagen">
+                <div class="nombre">
+                    Juan Perez
+                </div>
+                <div class="descripcion">
+                    <div class="perfil-AT-bloque-tags">
+                        <span class="otro-elemento-en-linea">9KM</span>
+                        <span class="otro-elemento-en-linea">Escolar</span>
+                        <span class="otro-elemento-en-linea">Domiciliario</span>
+                    </div>
+                    <p class="descripcion">¡Con 7 años de experiencia como acompañante terapéutica, soy una apasionada del mundo de la magia que creamos junto a los niños con Trastorno del Espectro Autista (TEA)! Mi truco especial: mezclar empatía, comunicación y mucha diversión para hacer que cada día sea una aventura llena de crecimiento.</p>
+                </div> -->
+			</div>
+		</div>	  
+    </div>
+    <script>
+        function cambiarColor(elemento) {
+            elemento.classList.toggle('celda-verde');
+        }
+    </script>
+    <script type="module" src="./tutorBusqueda.js"></script>
+</body>
+</html>
