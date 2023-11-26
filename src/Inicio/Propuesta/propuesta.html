@@ -17,7 +17,8 @@
 					<label class="label" for="obraSocial">
 						<span>ObraSocial:</span>
 						<div class="input-texto">
-							<select id="obrasSociales" name="obrasSociales">
+							<select id="selectObrasSociales" name="obrasSociales">
+								<option value="">Seleccione una opcion</option>
 								<option value="PAMI">PAMI</option>
 								<option value="OSDE">OSDE</option>
 								<option value="OSECAC">OSECAC</option>
@@ -46,11 +47,12 @@
 					<label class="label" for="descripcion">
 						<span>Descripcion:</span>
 					</label>
-					<textarea class="textarea" name="descripcion" placeholder="Descripcion de la propuesta"></textarea>
+					<textarea class="textarea" name="descripcion" placeholder="Descripcion de la propuesta" id="textarea"></textarea>
 					<button class="btn boton-formulario btn-primary" type="button" id="botonPropuesta">Enviar propuesta</button>
 				</form>
 			</div>
 		</div>
 	</main>
+	<script type="module" src="./propuesta.js"></script>
 </body>
 </html>

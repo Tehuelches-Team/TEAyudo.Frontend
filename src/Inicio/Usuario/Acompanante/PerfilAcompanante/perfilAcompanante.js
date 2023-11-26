@@ -9,8 +9,7 @@ window.onload = async function ()  {
     // await botonesFunciones();
     // let response = await funciones("","","");
     // await mapearFunciones(response);
-    let dato;
-    let result = await getAcompanante(dato);
+    let result = await getAcompanante(4);
     await mapearpagina(result);
 };
 
@@ -24,14 +23,14 @@ const mapearpagina = async (result) => {
     contenedor2.innerHTML += await mapearContenedor2(result);
     contenedor3.innerHTML += await mapearContenedor3(result);
     contenedor4.innerHTML += await mapearContenedor4(result);
-    await pintarCeldas(result.Disponibilidad); 
+    await pintarCeldas(result.disponibilidad); 
 };
 
 
 
 const pintarCeldas = async (cadena) => {
     let arrayCeldas = document.querySelectorAll('.celda-clic'); 
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < arrayCeldas.length; i++) {
         if (cadena[i] === "0")
         {
             if(arrayCeldas[i].classList.contains("celda-verde"))

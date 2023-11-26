@@ -60,7 +60,6 @@ document.getElementById("boton").addEventListener("click", async() =>
           await postEspecialidad(acompananteId, 2);
         }
         //post obra social
-
     }
 });
 
