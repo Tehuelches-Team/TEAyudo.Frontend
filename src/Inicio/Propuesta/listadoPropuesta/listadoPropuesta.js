@@ -1,4 +1,4 @@
-import { getPropuestaAT, getPropuestaTutor } from "../../../Services/PropuestaService.js";
+import { getPropuestaAT, getPropuestaTutor, putEstadoPropuesta } from "../../../Services/PropuestaService.js";
 import detallePropuesta from "./mapping/detallePropuesta.js";
 import tarjetaPropuesta from "./mapping/tarjetaPropuesta.js";
 
@@ -66,110 +66,37 @@ const agregarEvento = async () =>
         element.addEventListener("click", async() => 
         {
             contenedorDetalle.innerHTML = await detallePropuesta(element.id, element.getAttribute("data-info"));
+            await botonRojo();
+            await botonVerde();
+            await AbrirChat();
         });
     });
 }
 
 
+const botonRojo = async () => 
+{
+    document.getElementById("botonRechazar").addEventListener("click", async() =>  
+    {
+        let propuestaId = document.querySelector(".visualizar-propuesta").id;
+        await putEstadoPropuesta(propuestaId, 2);
+    });
+}  
 
 
+const botonVerde = async () => 
+{
+    document.getElementById("botonAceptar").addEventListener("click", async() => 
+    {
+        let propuestaId = document.querySelector(".visualizar-propuesta").id;
+        await putEstadoPropuesta(propuestaId, 1);
+    })};
 
-// https://localhost:7231/api/Propuesta/1/Acompanante
-
-// [
-//     {
-//       "propuestaId": 1,
-//       "tutorId": 1,
-//       "acompananteId": 1,
-//       "infoAdicional": "posbiles apunalamientos",
-//       "monto": 2220,
-//       "estadoPropuesta": 0,
-//       "descripcion": "posibles muertes",
-//       "tutorResponse": {
-//         "usuarioId": 1,
-//         "nombre": "roco",
-//         "apellido": "duarte",
-//         "correoElectronico": "ro@",
-//         "contrasena": "asdasd",
-//         "fotoPerfil": "https://pics.filmaffinity.com/8_crazy_nights-470524560-large.jpg",
-//         "domicilio": "calle 104",
-//         "fechaNacimiento": "12/12/2023",
-//         "estadoUsuarioId": 0
-//       }
-//     }
-//   ]
-
-
-
-
-
-
-
-
-
-
-                                        // TUTOR    propuesta hechas por el tutor tutor 
-
-// https://localhost:7231/api/Propuesta/1/Tutor
-
-// [
-//     {
-//       "propuestaId": 1,
-//       "tutorId": 1,
-//       "acompananteId": 1,
-//       "infoAdicional": "posbiles apunalamientos",
-//       "monto": 2220,
-//       "estadoPropuesta": 0,
-//       "descripcion": "posibles muertes",
-//       "acompananteResponse": {
-//         "acompananteId": 1,
-//         "usuarioId": 2,
-//         "nombre": "franco",
-//         "apellido": "paiz",
-//         "correoElectronico": "fran@",
-//         "contrasena": "asdasd",
-//         "fotoPerfil": "https://pics.filmaffinity.com/napoleon-775472086-large.jpg",
-//         "domicilio": "belgrano",
-//         "fechaNacimiento": "12/12/2023",
-//         "estadoUsuarioId": 0,
-//         "zonaLaboral": "varela",
-//         "contacto": "asdasdada",
-//         "documentacion": "ninguna",
-//         "experiencia": "fumo mucho porro",
-//         "obrasSociales": [],
-//         "disponibilidad": "000000111111",
-//         "especialidad": []
-//       }
-//     }
-//   ]
-
-
-
-
-
-                                        // Acompanante    propuesta recibidas por el acompanante 
-
-// https://localhost:7231/api/Propuesta/1/Acompanante
-
-// [
-//     {
-//       "propuestaId": 1,
-//       "tutorId": 1,
-//       "acompananteId": 1,
-//       "infoAdicional": "posbiles apunalamientos",
-//       "monto": 2220,
-//       "estadoPropuesta": 0,
-//       "descripcion": "posibles muertes",
-//       "tutorResponse": {
-//         "usuarioId": 1,
-//         "nombre": "roco",
-//         "apellido": "duarte",
-//         "correoElectronico": "ro@",
-//         "contrasena": "asdasd",
-//         "fotoPerfil": "https://pics.filmaffinity.com/8_crazy_nights-470524560-large.jpg",
-//         "domicilio": "calle 104",
-//         "fechaNacimiento": "12/12/2023",
-//         "estadoUsuarioId": 0
-//       }
-//     }
-//   ]
+const AbrirChat = async () => 
+{
+    document.getElementById("botonAbrirChat").addEventListener("click", async() =>  
+    {
+        let propuestaId = document.querySelector(".visualizar-propuesta").id;
+        window.location.href = `../../../Chat/chat.html?propuestaId=${propuestaId}`;
+    });
+}

@@ -84,8 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const password = document.getElementById("password").value;
     let usuarioLogeado = await login(email, password);
     loginModal.style.display = "none"; // Cerrar el modal después del login
-    let tipoUser = usuarioLogeado.result.tipoUsuario;
-    let usuarioId = usuarioLogeado.result.usuarioId;
+    let tipoUser = usuarioLogeado.tipoUsuario;
+    let usuarioId = usuarioLogeado.usuarioId;
     window.location.href = `./Propuesta/listadoPropuesta/listadoPropuesta.html?usuarioId=${usuarioId}&tipoUser=${tipoUser}`;
     //window.location.href = `../${tipoUser}/index.html?usuarioId=${usuarioId}`;
   });
