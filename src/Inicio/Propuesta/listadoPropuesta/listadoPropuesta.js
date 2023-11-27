@@ -41,7 +41,7 @@ const mapearPropuestasDelAcompanante = async (objeto) =>
 const mapearPropuestasDelTutor = async (objeto) => 
 {
     let contenedorLista = document.getElementById("columna-lista-propuestas");
-    if (objeto.lenght != 0)
+    if (objeto.lenght != undefined)
     {
         for (let index = 0; index < objeto.length; index++) {
             contenedorLista.innerHTML += await tarjetaPropuesta(objeto[index].propuestaId, objeto[index].acompananteResponse.nombre, objeto[index].acompananteResponse.apellido, objeto[index].estadoPropuesta, objeto[index].acompananteResponse.fotoPerfil, objeto[index].descripcion);
@@ -51,7 +51,8 @@ const mapearPropuestasDelTutor = async (objeto) =>
     }
     else
     {
-        contenedorLista.innerHTML = await sinPropuestas(); 
+        let conteiner = document.getElementById("contenedor-pagina-propuesta");
+        conteiner.innerHTML = await sinPropuestas(); 
     }
 }
 
