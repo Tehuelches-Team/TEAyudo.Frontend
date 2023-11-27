@@ -12,7 +12,8 @@ document.getElementById("boton").addEventListener("click", async() =>
     let formulario = document.querySelector(".formulario");
     let tipoUsuarioInputs = document.querySelectorAll('input[name="tipoUsuario"]');
     let fotoPerfil = document.querySelector(".imagen");
-    let contrasena = "asfsafsac";
+    let contrasena = document.getElementById("contasena");
+    // let contrasena = "asfsafsac";
     let noSeleccionado = true;
     let numUsuario;
     for (var i = 0; i < tipoUsuarioInputs.length; i++) {
@@ -47,7 +48,7 @@ document.getElementById("boton").addEventListener("click", async() =>
     else
     {   
         let nuevoNum = numUsuario + 1;
-        let response = await postUsuario(nombre.value, apellido.value, correo.value, fechaNacimiento.value, cuil.value, domicilio.value, "rfasfasfasfas", contrasena, nuevoNum); //Consultar status
+        let response = await postUsuario(nombre.value, apellido.value, correo.value, fechaNacimiento.value, cuil.value, domicilio.value, "https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg", contrasena.value, nuevoNum); //Consultar status
         let usuarioId = response.usuarioId;
         if(tipoUsuarioInputs[numUsuario].value == "acompanante"){
             window.location.href = `../Acompanante/RegistroAcompanante/registroAcompanante.html?usuarioId=${usuarioId}`; //Post acompanante

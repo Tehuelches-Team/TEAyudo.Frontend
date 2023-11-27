@@ -131,7 +131,11 @@ const mapearBotonBusqueda = async () =>
 const mapearBotonPropuestas = async () => 
 {
   const contenedor = document.querySelector(".header__li");
-  contenedor.innerHTML += `<button class="btn_iniciar" id="botonPropuestas">Ver propuestas</button>`; 
+  contenedor.innerHTML += `<button class="btn_iniciar" id="botonPropuestas">Ver propuestas</button>`;
+  contenedor.innerHTML += `<button class="btn_iniciar" id="botonDeslogear">Cerrar sesión</button>`
+  // document.getElementById("botonDeslogear").addEventListener( "click", () =>{
+  //   window.location.href = `${window.location.pathname}?id=${null}&tipoUsuario=${null}`;
+  // }); 
 }
 
 const addListen = async () => 
