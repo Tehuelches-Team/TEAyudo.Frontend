@@ -34,13 +34,24 @@ body {
     width: 100%;
     height: auto;
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
+}
+
+.contenedor-renglon
+{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: start;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .contenedor-izquierdo{
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     flex-wrap: wrap;
     width: 65%;
     height: 100%;
@@ -68,6 +79,11 @@ body {
     margin-left: 5%;
     border-radius: 5px;
     font-weight: bold;
+}
+
+.contenedor-horarios
+{
+    width: 100%;
 }
 
 .tablaHorarios {

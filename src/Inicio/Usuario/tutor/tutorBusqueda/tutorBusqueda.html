@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tutorBusqueda.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="bloque-busqueda">
+            <div class="input-texto">
+                <select class="desplegable" id="select-especialidad">
+                    <option value="" selected>Seleccione la especialidad...</option>
+                    <option value="Acompañamiento Escolar" data-info="1">Acompañamiento Escolar</option>
+                    <option value="Cuidado domiciliario" data-info="2">Cuidado domiciliario</option>
+                </select>   
+            </div>
+            <div class="input-texto">
+                <select class="desplegable" id="select-obraSocial">
+                    <option value="" selected>Seleccione las obras sociales...</option>
+                    <option value="OSDE" data-info="1">OSDE</option>
+                    <option value="Swiss Medical" data-info="2">Swiss Medical</option>
+                    <option value="Galeno" data-info="3">Galeno</option>
+                    <option value="Medicus" data-info="4">Medicus</option>
+                    <option value="OSDEPYM" data-info="5">OSDEPYM</option>
+                    <option value="OSPE" data-info="6">OSPE</option>
+                    <option value="OSSEG" data-info="7">OSSEG</option>
+                    <option value="OSUT" data-info="8">OSUT</option>
+                    <option value="OSUTHGRA" data-info="9">OSUTHGRA</option>
+                    <option value="OSFFENTOS" data-info="10">OSFFENTOS</option>
+                    <option value="OSFATUN" data-info="11">OSFATUN</option>
+                    <option value="OSPEPBA" data-info="12">OSPEPBA</option>
+                    <option value="OSPSA" data-info="13">OSPSA</option>
+                    <option value="OSPS" data-info="14">OSPS</option>
+                    <option value="OSPIA" data-info="15">OSPIA</option>
+                </select>
+            </div>
+            <div class="input-texto">
+                <input id="zonaLaboral" type="text" placeholder="Ingrese la zona laboral">
+            </div>
+            <div class="separador-tabla-boton">
+                <div class="bloque-horarios-busqueda">
+                    <div class="tablaHorarios" id="tablaHorarios">
+                        <div class="celda"></div>
+                        <div class="celda">Lunes</div>
+                        <div class="celda">Martes</div>
+                        <div class="celda">Miércoles</div>
+                        <div class="celda">Jueves</div>
+                        <div class="celda">Viernes</div>
+                        <div class="celda">Sábado</div>
+                        <div class="celda" onclick="cambiarColor(this)">Mañana</div>
+                        <div id="1" class="celda celda-clic celda-izquierda-sup" onclick="cambiarColor(this)"></div>
+                        <div id="2" class="celda celda-clic" onclick="cambiarColor(this)" ></div>
+                        <div id="3" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div id="4" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div id="5" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div id="6" class="celda celda-clic celda-derecha-sup" onclick="cambiarColor(this)"></div>
+                        <div class="celda" onclick="cambiarColor(this)">Tarde</div>
+                        <div id="7" class="celda celda-clic celda-izquierda-inf" onclick="cambiarColor(this)"></div>
+                        <div id="8" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div id="9" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div id="10" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div id="11" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                        <div id="12" class="celda celda-clic celda-derecha-inf" onclick="cambiarColor(this)"></div>
+                    </div>
+                </div>
+                <div  class="boton-busqueda">          
+                    <a href="#" class="boton-basico">Buscar Profecional</a>
+                </div>
+            </div>
+        </div>
+        <div id="cantidad-resultados"></div>
+        <div class="contenedor-resultados" id="contenedor-resultados">
+		</div>	  
+    </div>
+    <script>
+        function cambiarColor(elemento) {
+            elemento.classList.toggle('celda-verde');
+        }
+    </script>
+    <script type="module" src="tutorBusqueda.js"></script>
+</body>
+</html>

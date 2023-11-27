@@ -1,4 +1,29 @@
-export default async function postAcompanante(usuarioId, zonaLaboral, contacto, disponibilidad, documentacion, experiencia)
+export async function getAcompanante (acompananteId){
+    const config = {
+        method: 'GET',
+        headers: 
+        {
+            'Content-Type': 'application/json'
+        },
+    };
+    try 
+    {
+        const response = await fetch
+        (
+            `https://localhost:7235/api/Acompanantes/${acompananteId}`, config
+        );
+        let result = await response.json();
+        return result;
+    }
+    catch (error) 
+    {
+      console.log(error);
+    }
+}
+
+
+
+export async function postAcompanante(usuarioId, zonaLaboral, contacto, disponibilidad, documentacion, experiencia)
 {
     let config = {
         method: 'POST',
@@ -32,7 +57,7 @@ export default async function postAcompanante(usuarioId, zonaLaboral, contacto, 
 
 
 
-export default async function postAcompanante(acompananteId, especialidadId)
+export async function postEspecialidad(acompananteId, especialidadId)
 {
     let config = {
         method: 'POST',
@@ -58,4 +83,58 @@ export default async function postAcompanante(acompananteId, especialidadId)
     {
         console.log(error);
     }
+};
+
+export async function postObraSocial(acompananteId, obraSocialId)
+{
+    let config = {
+        method: 'POST',
+        headers: 
+        {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "acompananteId": acompananteId,
+            "obraSocialId": obraSocialId
+        }),
+    }
+    try 
+    { 
+        const response = await fetch
+        (
+            `https://localhost:7235/api/Acompanantes/Relacion/Acompanante/ObraSocial`, config
+        );
+        let result = await response.json();
+        return result;
+    }
+    catch (error) 
+    {
+        console.log(error);
+    }
+};
+
+export async function CargarAT(especialidad, disponibilidad, obrasocial, zonaLaboral){
+    const config = {
+        method: 'GET',
+        headers:{
+            'Content-Type':'application/json'
+        }
+    }
+    ;
+    try{
+        const response = await fetch (`https://localhost:7235/api/Acompanantes/Filtros?Especialidad=${especialidad}&Disponibilidad=${disponibilidad}&ObraSocial=${obrasocial}&ZonaLaboral=${zonaLaboral}`, config);
+        return response;
+    }catch(error){
+        console.log(error);
+    }
+};
+
+
+
+export default {
+    getAcompanante,
+    postAcompanante,
+    postEspecialidad,
+    postObraSocial,
+    CargarAT,
 };

@@ -14,31 +14,16 @@
 			<div class="contenedor-formulario">
 				<h3>Detalles de la propuesta</h3>
 				<form id="formulario-crear-propuesta">
-					<label class="label" for="obraSocial">
-						<span>ObraSocial:</span>
-						<div class="input-texto">
-							<select id="obrasSociales" name="obrasSociales">
-								<option value="PAMI">PAMI</option>
-								<option value="OSDE">OSDE</option>
-								<option value="OSECAC">OSECAC</option>
-								<option value="SwissMedical">Swiss Medical</option>
-								<option value="Galeno">Galeno</option>
-								<option value="IAPOS">IAPOS</option>
-								<option value="IOMA">IOMA</option>
-								<option value="OSMATA">OSMATA</option>
-								<option value="OSPERYH">OSPERYH</option>
-							</select>
-						</div>
-					</label>
+					
 					<label class="label" for="modalidad">
 						<span>Modalidad:</span>
 						<div class="contenedor-modalidad-checkbox">
 							<label>
-								<input type="checkbox" id="domiciliario" name="domiciliario">
+								<input type="radio" id="domiciliario" name="tipo-servicio">
 								<span>Domiciliario</span>
 							</label>
 							<label>
-								<input type="checkbox" id="escolar" name="escolar">
+								<input type="radio" id="escolar" name="tipo-servicio">
 								<span>Escolar</span>
 							</label>
 						</div>
@@ -46,11 +31,12 @@
 					<label class="label" for="descripcion">
 						<span>Descripcion:</span>
 					</label>
-					<textarea class="textarea" name="descripcion" placeholder="Descripcion de la propuesta"></textarea>
-					<button class="btn boton-formulario btn-primary" type="button">Enviar propuesta</button>
+					<textarea class="textarea" name="descripcion" placeholder="Descripcion de la propuesta" id="textarea" required></textarea>
+					<button class="btn boton-formulario btn-primary" type="button" id="botonPropuesta">Enviar propuesta</button>
 				</form>
 			</div>
 		</div>
 	</main>
+	<script type="module" src="./propuesta.js"></script>
 </body>
 </html>
