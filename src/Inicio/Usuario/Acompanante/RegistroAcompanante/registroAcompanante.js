@@ -81,7 +81,8 @@ document.getElementById("boton").addEventListener("click", async() =>
           console.log(ob.getAttribute("data-info"));
           await postObraSocial(acompananteId, ob.getAttribute("data-info"));
         });
-    }
+        window.location.href = `../../../index.html?id=${acompananteId}&tipoUsuario=${1}`;
+      }
 });
 
 
