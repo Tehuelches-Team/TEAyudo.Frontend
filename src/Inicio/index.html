@@ -33,7 +33,8 @@
                         <!-- <li class="header__li"><a href="#" class="header__link">Inicio</a></li>
                         <li class="header__li"><a href="#" class="header__link">Nosotros</a></li>
                         <li class="header__li"><a href="#" class="header__link">Servicios</a></li> -->
-                        <li class="header__li"><button class="btn_iniciar" id="LoginPrincipal">Iniciar sesión</button>
+                        <li class="header__li"><button class="btn_iniciar" id="openModalBtn" id="LoginPrincipal">Iniciar sesión</button>
+                        
                         </li>
                     </ul>
                 </nav>
@@ -43,11 +44,33 @@
     <main class="main">
         <div class="main__content">
             <div class="main__title">
+                <!-- Botón para abrir el modal -->
+                <!-- <button id="openModalBtn">Abrir Modal</button> -->
+
+                <!-- El modal -->
+                <div id="loginModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModalBtn">&times;</span>
+                        <h2>Login</h2>
+                        <form id="loginForm">
+                            <!-- Campos de login local... -->
+                            <div>
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" placeholder="Email" required>
+                            </div>
+                            <div>
+                                <label for="password">Contraseña:</label>
+                                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                                <!-- Botones para autenticación externa -->
+
+                                <!-- Botón de submit para el login local -->
+                                <button type="submit">Login</button>
+                        </form>
+                    </div>
+                </div>
                 <h1 class="main__h1">Encontrá el acompañante terapéutico perfecto para tu hijo con TEA</h1>
             </div>
-            <div class="main__subtitle">
-                <p class="main__h2">Buscar acompañantes terapéuticos nunca fue tan fácil</h2>
-            </div>
+
             <div class="main_searchbox container">
 
                 <!-- <form action="" class="main__form">
@@ -113,94 +136,49 @@
             </div>
         </div>
     </main>
-    <div class="container px-4 py-5" id="custom-cards">
-        <h2 class="pb-2 border-bottom">Nuestros testimonios</h2>
-
-        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-            <div class="col">
-                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                    style="background-image: url('unsplash-photo-1.jpg');">
-                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                        <h3 class="pt-5 mt-5 mb-4 display-7 lh-1 fw-bold">Short title, long jacket</h3>
-                        <ul class="d-flex list-unstyled mt-auto">
-                            <li class="me-auto">
-                                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                                    class="rounded-circle border border-white">
-                            </li>
-                            <li class="d-flex align-items-center me-3">
-                                <svg class="bi me-2" width="1em" height="1em">
-                                    <use xlink:href="#geo-fill"></use>
-                                </svg>
-                                <small>Earth</small>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <svg class="bi me-2" width="1em" height="1em">
-                                    <use xlink:href="#calendar3"></use>
-                                </svg>
-                                <small>3d</small>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="contenedor-guia">
+        <h1>Buscar acompañantes terapéuticos nunca fue tan fácil</h1>
+        <div class="guia-bloque">
+            <div class="izquierda">
+                <h2>1. Buscá</h2>
+                <p>Encontrá acompañantes terapéuticos según tu ubicación, obra social, disponibilidad de horarios, y
+                    necesidades. ¡Elegí al que mejor se adapte a vos!</p>
             </div>
-
-            <div class="col">
-                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                    style="background-image: url('unsplash-photo-2.jpg');">
-                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                        <h3 class="pt-5 mt-5 mb-4 display-7 lh-1 fw-bold">Much longer title that wraps to multiple lines
-                        </h3>
-                        <ul class="d-flex list-unstyled mt-auto">
-                            <li class="me-auto">
-                                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                                    class="rounded-circle border border-white">
-                            </li>
-                            <li class="d-flex align-items-center me-3">
-                                <svg class="bi me-2" width="1em" height="1em">
-                                    <use xlink:href="#geo-fill"></use>
-                                </svg>
-                                <small>Pakistan</small>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <svg class="bi me-2" width="1em" height="1em">
-                                    <use xlink:href="#calendar3"></use>
-                                </svg>
-                                <small>4d</small>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="derecha">
+                <img src="foto-perfil.jpg">
             </div>
-
-            <div class="col">
-                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                    style="background-image: url('unsplash-photo-3.jpg');">
-                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                        <h3 class="pt-5 mt-5 mb-4 display-7 lh-1 fw-bold">Another longer title belongs here</h3>
-                        <ul class="d-flex list-unstyled mt-auto">
-                            <li class="me-auto">
-                                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                                    class="rounded-circle border border-white">
-                            </li>
-                            <li class="d-flex align-items-center me-3">
-                                <svg class="bi me-2" width="1em" height="1em">
-                                    <use xlink:href="#geo-fill"></use>
-                                </svg>
-                                <small>California</small>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <svg class="bi me-2" width="1em" height="1em">
-                                    <use xlink:href="#calendar3"></use>
-                                </svg>
-                                <small>5d</small>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        </div>
+        <div class="guia-bloque">
+            <div class="izquierda">
+                <img src="generarpropuesta.png">
+            </div>
+            <div class="derecha">
+                <h2>2. Haz una propuesta</h2>
+                <p>Envía tu propuesta de trabajo al acompañante seleccionado detallando todos los aspectos del servicio
+                    que necesitás.</p>
+            </div>
+        </div>
+        <div class="guia-bloque">
+            <div class="izquierda">
+                <h2>3. Acuerda</h2>
+                <p>Si el acompañante está interesado, podrá aceptar tu propuesta para luego iniciar una conversación por
+                    chat y definir más detalles.</p>
+            </div>
+            <div class="derecha">
+                <img src="acuerdo.png">
+            </div>
+        </div>
+        <div class="guia-bloque">
+            <div class="izquierda">
+                <img src="TEA.png">
+            </div>
+            <div class="derecha">
+                <h3>Encontra el Acompañante terapeutico ideal para tu hijo</h3>
+                <p>“TEAyudo me permitió encontrar el acompañante ideal para mi hijo de manera fácil y rápida”.</p>
+                <span>Mamá de Alicia</span>
             </div>
         </div>
     </div>
-
     <footer class="tm-bg-dark-blue">
         <div class="container">
             <div class="row">
