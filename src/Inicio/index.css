@@ -218,6 +218,7 @@ body {
 
 .mi-boton {
     display: inline-block;
+    margin: 3.5rem 0 0 1rem;
     padding: 10px 20px;
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;

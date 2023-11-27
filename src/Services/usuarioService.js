@@ -43,7 +43,7 @@ export async function login(email, contrasena) {
     );
     if (response.ok === false)
     {
-      return 2;
+      return 7;
     };
     let result = await response.json();
     console.log(result);

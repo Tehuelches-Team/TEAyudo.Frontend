@@ -1,13 +1,12 @@
 import { getPropuestaAT, getPropuestaTutor, putEstadoPropuesta } from "../../../Services/PropuestaService.js";
+import sinPropuestas from "./mapping/sinPropuestas.js";
 import detallePropuesta from "./mapping/detallePropuesta.js";
 import tarjetaPropuesta from "./mapping/tarjetaPropuesta.js";
 
 window.onload = async function() {
     const urlParams = new URLSearchParams(window.location.search);  
-    const id = urlParams.get('usuarioId');
-    const tipoUsuario = urlParams.get('tipoUser');
-    // const id = 1;
-    // const tipoUsuario = 2;
+    const id = urlParams.get('id');
+    const tipoUsuario = urlParams.get('tipoUsuario');
     if (tipoUsuario == 1){
         let propuestas = await getPropuestaAT(id);
         await mapearPropuestasDelAcompanante(propuestas);
@@ -31,7 +30,7 @@ const mapearPropuestasDelAcompanante = async (objeto) =>
     }
     else
     {
-        contenedorLista.innerHTML = sinFunciones(); 
+        contenedorLista.innerHTML = await sinPropuestas(); 
     }
 }
 
@@ -52,7 +51,7 @@ const mapearPropuestasDelTutor = async (objeto) =>
     }
     else
     {
-        contenedorLista.innerHTML = sinFunciones(); 
+        contenedorLista.innerHTML = await sinPropuestas(); 
     }
 }
 
@@ -63,7 +62,7 @@ const agregarEvento = async () =>
     divs.forEach(async element => {
         element.addEventListener("click", async() => 
         {
-            contenedorDetalle.innerHTML = await detallePropuesta(element.id, element.getAttribute("data-info"));
+            contenedorDetalle.innerHTML = await detallePropuesta(element.id, element.getAttribute("data-info"), element.getAttribute("data-estado"));
             await botonRojo();
             await botonVerde();
             await AbrirChat();
@@ -73,7 +72,7 @@ const agregarEvento = async () =>
 
 
 const botonRojo = async () => 
-{
+{   
     document.getElementById("botonRechazar").addEventListener("click", async() =>  
     {
         let propuestaId = document.querySelector(".visualizar-propuesta").id;

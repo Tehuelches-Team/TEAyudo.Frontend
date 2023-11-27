@@ -1,15 +1,31 @@
 import { login } from "../Services/usuarioService.js";
 
-window.onload = function () {
-  //cargarInicio();
+var id;
+var tipoUsuario;
+
+
+window.onload = async function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  id = urlParams.get('id');
+  if (id != null)
+  {
+    tipoUsuario = urlParams.get('tipoUsuario');
+    mapearBotonPropuestas();
+    if(tipoUsuario == 2)
+    {
+      mapearBotonBusqueda();
+    }
+    await addListen();
+    await desaparecerBotones();
+  }
 };
+
 export const loginPrincipal = document.querySelector("#LoginPrincipal");
 
-document
-  .getElementById("buscarProfesional")
-  .addEventListener("click", function () {
-    cargarSeleccion();
-  });
+// document.getElementById("buscarProfesional")
+//   .addEventListener("click", function () {
+//     cargarSeleccion();
+//   });
 
   function cargarSeleccion() {
   let agenda = [];
@@ -17,8 +33,8 @@ document
   seleccion.forEach((elemento) => {
     agenda.push(elemento.id);
   });
-  console.log(crearArreglo(agenda));
-  console.log(obtenerIndicesDesdeCadena(crearArreglo(agenda)));
+  // console.log(crearArreglo(agenda));
+  // console.log(obtenerIndicesDesdeCadena(crearArreglo(agenda)));
 }
 
 function crearArreglo(indicesRecibidos) {
@@ -83,21 +99,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     let usuarioLogeado = await login(email, password);
-    if (usuarioLogeado !== 2)
-    {
-      loginModal.style.display = "none"; // Cerrar el modal después del login
-      let tipoUser = usuarioLogeado.tipoUsuario;
-      let usuarioId = usuarioLogeado.usuarioId;
-      window.location.href = `./Propuesta/listadoPropuesta/listadoPropuesta.html?usuarioId=${usuarioId}&tipoUser=${tipoUser}`;
-      //window.location.href = `../${tipoUser}/index.html?usuarioId=${usuarioId}`;
-    }
-    else
+    if (usuarioLogeado == 7)
     {
       document.getElementById("email").value = "";
       document.getElementById("password").value = "";
       const formulario = document.getElementById("loginForm");
       document.getElementById("email").setCustomValidity('no se encontraron coincidencias');
       formulario.reportValidity(); 
+    }
+    else
+    {
+      loginModal.style.display = "none"; // Cerrar el modal después del login
+      let tipoUser = usuarioLogeado.tipoUsuario;
+      let usuarioId = usuarioLogeado.usuarioId;
+      window.location.href = `${window.location.pathname}?id=${usuarioId}&tipoUsuario=${tipoUsuario}`;
+      //window.location.href = `../${tipoUser}/index.html?usuarioId=${usuarioId}`;
     };
   });
 });
@@ -105,3 +121,39 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("botonRegistrar").addEventListener("click", () => {
   window.location.href = `./Usuario/RegistroUsuario/registroUsuario.html`;
 });
+
+const mapearBotonBusqueda = async () => 
+{
+  const contenedor = document.querySelector(".header__li");
+  contenedor.innerHTML += `<button class="btn_iniciar" id="botonBusqueda">Busqueda AT</button>`;
+}
+
+const mapearBotonPropuestas = async () => 
+{
+  const contenedor = document.querySelector(".header__li");
+  contenedor.innerHTML += `<button class="btn_iniciar" id="botonPropuestas">Ver propuestas</button>`; 
+}
+
+const addListen = async () => 
+{
+  let botonBusqueda = document.getElementById("botonBusqueda");
+  if (botonBusqueda != null)
+  {
+    botonBusqueda.addEventListener("click", () => 
+    {
+      window.location.href = `./Usuario/tutor/tutorBusqueda/tutorBusqueda.html?tutorId=${id}`;
+    });
+  }
+  let botonPropuesta = document.getElementById("botonPropuestas");
+  botonPropuesta.addEventListener("click", () => 
+  {
+    window.location.href = `./Propuesta/listadoPropuesta/listadoPropuesta.html?id=${id}&tipoUsuario=${tipoUsuario}`;
+  });  
+}
+
+
+const desaparecerBotones = async () => 
+{
+  document.getElementById("openModalBtn").style.display = "none";
+  document.getElementById("botonRegistrar").style.display = "none"; 
+}
