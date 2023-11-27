@@ -118,3 +118,32 @@ h1 {
 .elemento-lista-propuesta-vacio p {
     font-weight: bold;
 }
+
+.btn{
+    padding: 2%;
+    margin: 2%;
+    border-radius: 10%;
+}
+
+.btn:hover
+{
+    transform: scale(1.05);
+    border: solid 1px black;
+    transition: 0.3s;
+}
+
+.btn-danger
+{
+    background-color: red;
+}
+
+.btn-primary
+{
+    background-color: #2980b9;
+}
+
+.btn-success
+{
+    background-color: green;
+}
+

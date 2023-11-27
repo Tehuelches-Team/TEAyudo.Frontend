@@ -68,6 +68,6 @@ document.getElementById("RegistraPaciente").addEventListener("click", async() =>
     else
     {
         await postPaciente(tutorIdValue, nombreObjet.value, apellidoObjet.value, fechaNacimientoObjet.value, diagnosticoObjet.value, arraySexo[numSexo].value, cudObjet.value);
-        window.location.href = `../tutorBusqueda/tutorBusqueda.html?tutorId=${tutorId}`;
+        window.location.href = `../../../index.html?id=${tutorId}&tipoUsuario=${2}`;
     }
 });

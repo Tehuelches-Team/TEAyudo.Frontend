@@ -1,5 +1,5 @@
 import { postTutor } from "../../../Services/TutorService.js";
-import postUsuario from "../../../Services/usuarioService.js";
+import { postUsuario } from "../../../Services/usuarioService.js";
 
 document.getElementById("boton").addEventListener("click", async() =>
 {
@@ -10,7 +10,6 @@ document.getElementById("boton").addEventListener("click", async() =>
     let cuil = document.getElementById("cuil");
     let domicilio = document.getElementById("domicilio");
     let formulario = document.querySelector(".formulario");
-    // let tipoUsuario = document.getElementById("tipoUsuario");
     let tipoUsuarioInputs = document.querySelectorAll('input[name="tipoUsuario"]');
     let fotoPerfil = document.querySelector(".imagen");
     let contrasena = "asfsafsac";
@@ -46,17 +45,17 @@ document.getElementById("boton").addEventListener("click", async() =>
         formulario.reportValidity(); 
     }
     else
-    {
-        alert(tipoUsuarioInputs[numUsuario].value); 
-        	
-        let response = await postUsuario(nombre.value, apellido.value, correo.value, fechaNacimiento.value, cuil.value, domicilio.value, "rfasfasfasfas", contrasena); //Consultar status
+    {   
+        let nuevoNum = numUsuario + 1;
+        let response = await postUsuario(nombre.value, apellido.value, correo.value, fechaNacimiento.value, cuil.value, domicilio.value, "rfasfasfasfas", contrasena, nuevoNum); //Consultar status
         let usuarioId = response.usuarioId;
         if(tipoUsuarioInputs[numUsuario].value == "acompanante"){
             window.location.href = `../Acompanante/RegistroAcompanante/registroAcompanante.html?usuarioId=${usuarioId}`; //Post acompanante
+        }
+        else if(tipoUsuarioInputs[numUsuario].value == "tutor"){
+            let tutorResponse = await postTutor(usuarioId);
+            let tutorId = tutorResponse.tutorId;
+            window.location.href = `../tutor/registroPaciente/registroPaciente.html?tutorId=${tutorId}`; //Post tutor
+        };
     }
-    if(tipoUsuarioInputs[numUsuario].value == "tutor"){
-        let tutorResponse = await postTutor(usuarioId);
-        let tutorId = tutorResponse.tutorId;
-        window.location.href = `../tutor/registroPaciente/registroPaciente.html?tutorId=${tutorId}`; //Post tutor
-    }};
 });

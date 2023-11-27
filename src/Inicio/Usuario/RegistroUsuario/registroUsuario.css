@@ -164,4 +164,10 @@ body {
     color: rgb(255, 255, 255);
 }
 
+.footer{
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+}
+
 

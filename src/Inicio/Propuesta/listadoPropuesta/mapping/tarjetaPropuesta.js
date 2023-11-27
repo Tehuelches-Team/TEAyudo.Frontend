@@ -14,7 +14,7 @@ export default async function tarjetaPropuesta(id, nombre, apellido, estadoPropu
         estado = "Rechazado";
     }
     return  `
-            <div class="elemento-lista-propuesta" id="${id}" data-info="${descripcion}">
+            <div class="elemento-lista-propuesta" id="${id}" data-info="${descripcion}" data-estado="${estadoPropuesta}">
                 <div class="columa-izquierda-elemento-lista-propuesta">
                     <span class="elemento-lista-propuesta-id">ID: ${id}</span>
                     <br>
