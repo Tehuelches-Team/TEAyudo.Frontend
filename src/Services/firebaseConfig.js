@@ -5,18 +5,12 @@ import {
   set,
   runTransaction,
 } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
-import { botones } from "../Chat/chat.js";
-import { NombreUsuario } from "../Chat/chat.js";
-import { Mensaje } from "../Chat/chat.js";
-import { loginPrincipal } from "../Inicio/index.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
 import {
   getMessaging,
   getToken,
   onMessage,
 } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-messaging.js";
-import { Contenido } from "../Chat/chat.js";
-import { Formulario } from "../Chat/chat.js";
 // Add Firebase products that you want to use
 import {
   getAuth,
@@ -59,6 +53,17 @@ export const messaging = getMessaging(app);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 const MensajesRef = collection(db, "Mensajes");
+export const botones = document.querySelector("#buttons");
+export const NombreUsuario = document.querySelector("#NombreUsuario");
+export const Formulario = document.querySelector("#Formulario");
+export const Mensaje = document.querySelector("#Mensaje");
+export const Contenido = document.querySelector("#ContenidoWeb");
+
+let propuesta = "";
+window.onload = async function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  propuesta = urlParams.get("propuestaId");
+};
 //Metodo recibir mensajes en primer plano`
 onMessage(messaging, (payload) => {
   console.log("Message received. ", payload);
@@ -92,84 +97,63 @@ getToken(messaging, {
   .catch((err) => {
     console.log("An error occurred while retrieving token. ", err);
   });
-//Verificar que el usuario este logueado
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     console.log("Usuario logueado");
-//     botones.innerHTML = `<button class="btn btn-outline-success" id="btnLogout">Cerrar sesión</button>`;
-//     let displayName = user.displayName;
-//     let email = user.email;
-//     let emailVerified = user.emailVerified;
-//     let photoURL = user.photoURL;
-//     let isAnonymous = user.isAnonymous;
-//     let uid = user.uid;
-//     let providerData = user.providerData;
-//     Formulario.classList = "input-group py-3 fixed-bottom container-fluid";
-//     ContenidoChat(user);
 
-//     CerrarSesion();
-//   } else {
-//     console.log("Usuario no logueado");
-//     botones.innerHTML = `<button class="btn btn-outline-success" id="btnLogin">Iniciar sesión</button>`;
-//     IniciarSesion();
-//     NombreUsuario.innerHTML = "ChatTEAyudo";
-//     Formulario.classList =
-//       "input-group py-3 fixed-bottom container-fluid d-none";
-//   }
-// }); // <-- added closing parenthesis
 onAuthStateChanged(auth, (user) => {
+  const nav = document.querySelector("#cabecera");
   if (user) {
     console.log("Usuario logueado");
+    nav.innerHTML = `<button class="btn_iniciar" id="LogoutGoogle" onclick="CerrarSesion(this)">Cerrar sesión en Google</button>`;
+    ContenidoChat(user);
+    CerrarSesion();
+  } else {
+    console.log("Usuario deslogueado");
+    nav.innerHTML = `<button class="btn_iniciar" id="LoginGoogle">Iniciar sesión en Google</button>`;
+    Formulario.style.display = "none";
     IniciarSesion();
   }
 });
 const IniciarSesion = () => {
-  const btnLogin = document.querySelector("#LoginPrincipal");
+  const btnLogin = document.querySelector("#LoginGoogle");
+  const nav = document.querySelector("#cabecera");
+  const avatar = document.querySelector("#avatar");
+  const datosUser = document.querySelector("#datosUser");
   btnLogin.addEventListener("click", () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
+        ContenidoChat(result.user);
+        enviarMensaje(result.user);
+        nav.innerHTML = `<button class="btn_iniciar" id="LogoutGoogle">Cerrar sesión en Google</button>`;
+        avatar.innerHTML = `<img src="${result.user.photoURL}" alt="" class="rounded float-end" width="40px" height="40px">`;
+        datosUser.innerHTML = `<p>Usuario: ${result.user.displayName}</p>`;
+        Contenido.style.display = "block";
+        Formulario.style.display = "block";
+        CerrarSesion();
       })
       .catch((error) => {
         console.log(error);
       });
   });
 };
-// const IniciarSesion = () => {
-//   const btnLogin = document.querySelector("#btnLogin");
-//   btnLogin.addEventListener("click", () => {
-//     const provider = new GoogleAuthProvider();
-//     signInWithPopup(auth, provider)
-//       .then((result) => {
-//         console.log(result);
-//         console.log("Usuario logueado");
-//         botones.innerHTML = `<button class="btn btn-outline-success" id="btnLogout">Cerrar sesión</button>`;
-//         let displayName = result.user.displayName;
-//         let email = result.user.email;
-//         let emailVerified = result.user.emailVerified;
-//         let photoURL = result.user.photoURL;
-//         let isAnonymous = result.user.isAnonymous;
-//         let uid = result.user.uid;
-//         let providerData = result.user.providerData;
-//         NombreUsuario.innerHTML = displayName;
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   });
-// };
 
 const CerrarSesion = () => {
-  const btnLogout = document.querySelector("#btnLogout");
+  const nav = document.querySelector("#cabecera");
+  const btnLogout = document.querySelector("#LogoutGoogle");
+  const avatar = document.querySelector("#avatar");
+  const datosUser = document.querySelector("#datosUser");
   btnLogout.addEventListener("click", () => {
     auth.signOut();
     console.log("Usuario deslogueado");
-    botones.innerHTML = `<button class="btn btn-outline-success" id="btnLogin">Iniciar sesión</button>`;
+    nav.innerHTML = `<button class="btn_iniciar" id="LoginGoogle">Iniciar sesión en Google</button>`;
+    avatar.innerHTML = `TEAyudo`;
+    datosUser.innerHTML = ``;
+    Contenido.style.display = "none";
+    Formulario.style.display = "none";
   });
 };
 
-const ContenidoChat = (user) => {
+const enviarMensaje = async (user) => {
   Formulario.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!Mensaje.value.trim()) {
@@ -177,8 +161,9 @@ const ContenidoChat = (user) => {
       return;
     }
     console.log(Mensaje.value);
+    let urlBase = `propuesta/${propuesta}/Mensajes`;
     try {
-      await addDoc(collection(db, "Mensajes"), {
+      await addDoc(collection(db, urlBase), {
         uid: user.uid,
         NombreUsuario: user.displayName,
         fecha: new Date(),
@@ -204,36 +189,75 @@ const ContenidoChat = (user) => {
     } catch (error) {
       console.log(error);
     }
-
-    //Traer los mensajes en tiempo real
-    const q = query(collection(db, "Mensajes"), orderBy("fecha", "asc"));
-    onSnapshot(q, (querySnapshot) => {
-      const MensajesActualizados = [];
-      Contenido.innerHTML = "";
-      querySnapshot.forEach((doc) => {
-        if (doc.data().uid === user.uid) {
-          Contenido.innerHTML += `<div class="d-flex justify-content-end">
-            <img src="${
-              user.photoURL
-            }" alt="" class="rounded float-end" width="20px" height="20px">
-            <span class="badge rounded-pill text-bg-primary"
-              >${doc.data().Mensaje}</span
-            ></div>`;
-        } else {
-          Contenido.innerHTML += `<div class="d-flex justify-content-start">
-            <img src="${
-              doc.data().photoURL
-            }" alt="" class="rounded float-end" width="20px" height="20px">
-            <span class="badge rounded-pill bg-primary text-white"
-              >${doc.data().Mensaje}</span
-            ></div>`;
-        }
-        MensajesActualizados.push({
-          id: doc.uid,
-          ...doc.data(),
-        });
-      });
-      console.log(MensajesActualizados);
-    });
   });
+  ContenidoChat(user);
+};
+
+const ContenidoChat = (user) => {
+  //Traer los mensajes en tiempo real
+  let urlBase = `propuesta/${propuesta}/Mensajes`;
+  const q = query(collection(db, urlBase), orderBy("fecha", "asc"));
+  onSnapshot(q, (querySnapshot) => {
+    const MensajesActualizados = [];
+    Contenido.innerHTML = "";
+    querySnapshot.forEach((doc) => {
+      if (doc.data().uid === user.uid) {
+        Contenido.innerHTML += `<div class="d-flex justify-content-end">
+              <img src="${
+                user.photoURL
+              }" alt="" class="rounded float-end" width="20px" height="20px">
+              <span class="badge rounded-pill text-bg-primary"
+                >${doc.data().Mensaje}</span
+              ></div>`;
+      } else {
+        Contenido.innerHTML += `<div class="d-flex justify-content-start">
+              <img src="${
+                doc.data().photoURL
+              }" alt="" class="rounded float-end" width="20px" height="20px">
+              <span class="badge rounded-pill bg-primary text-white"
+                >${doc.data().Mensaje}</span
+              ></div>`;
+      }
+      MensajesActualizados.push({
+        id: doc.uid,
+        ...doc.data(),
+      });
+    });
+    console.log(MensajesActualizados);
+  });
+  // Formulario.addEventListener("submit", async (e) => {
+  //   e.preventDefault();
+  //   if (!Mensaje.value.trim()) {
+  //     console.log("Mensaje vacio");
+  //     return;
+  //   }
+  //   console.log(Mensaje.value);
+  //   try {
+  //     await addDoc(collection(db, "Mensajes"), {
+  //       uid: user.uid,
+  //       NombreUsuario: user.displayName,
+  //       fecha: new Date(),
+  //       Mensaje: Mensaje.value,
+  //       photoURL: user.photoURL,
+  //       TokenNotificaciones: localStorage.getItem("token"),
+  //     });
+  //     console.log("Mensaje enviado", Mensaje.value);
+  //     Mensaje.value = "";
+  //     const message = {
+  //       notification: {
+  //         title: "Nuevo mensaje de " + user.displayName,
+  //         body: Mensaje.value,
+  //       },
+  //       token: localStorage.getItem("token"),
+  //     };
+  //     // const response = await firebase.messaging.send(message);
+  //     // if (response) {
+  //     //   console.log("Notificacion enviada");
+  //     // } else {
+  //     //   console.log("Notificacion no enviada");
+  //     // }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // });
 };
