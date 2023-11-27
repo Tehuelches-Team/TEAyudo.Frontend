@@ -2,63 +2,76 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chat TEAyudo</title>
-</head>
-
-<body>
-  <!-- navbar -->
-
-  <nav class="navbar navbar-dark bg-dark">
-    <span class="navbar-brand" id="NombreUsuario">ChatTEAyudo</span>
-    <div id="buttons"></div>
-  </nav>
-  <main id="ContenidoWeb" class="mt-2 px-2" style="height: 80vh; overflow-y: scroll"></main>
-  <!-- cuerpo del chat -->
-
-  <!-- <div class="d-flex justify-content-end">
-      <img
-        src="${
-        user.photoURL
-      }"
-        alt=""
-        class="rounded float-end"
-        width="20px"
-        height="20px"
-      />
-      <span class="badge rounded-pill text-bg-primary" id="NombreUsuario"
-        >mensaje del usuario</span
-      >
-    </div> -->
-
-  <!-- <div class="d-flex justify-content-start">
-      <span class="badge rounded-pill text-bg-secondary"
-        >mensaje del usuario entrante</span
-      >
-    </div> -->
-  <!-- formulario -->
-
-  <form id="Formulario" class="input-group py-3 fixed-bottom container-fluid">
-    <label for="mensaje">Mensaje</label>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Enviar mensaje" aria-label="Recipient's username"
-        aria-describedby="button-addon2" id="Mensaje" />
-      <button class="btn btn-outline-info btn" type="submit" id="button-addon2">
-        Enviar
-      </button>
-    </div>
-  </form>
-
-  <!-- scripts -->
-  <script type="module" src="../Chat/chat.js"></script>
-  <script type="module" src="../Services/firebaseConfig.js"></script>
-  <script type="module" src="../Services/firebase-admin.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Inicio/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,500;0,800;1,100;1,400;1,600;1,800;1,900&display=swap"
+    rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,500;0,800;1,100;1,400;1,600;1,800;1,900&display=swap');
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__content">
+      <div class="header__logo">
+        <a href="" class="logo" id="avatar">TEAyudo
+        </a>
+      </div>
+      <div class="header__ul" id="datosUser">
+
+      </div>
+      <div class="header__menu">
+        <nav class="header__nav">
+          <ul class="header__ul">
+            <!-- <li class="header__li"><a href="#" class="header__link">Inicio</a></li>
+                        <li class="header__li"><a href="#" class="header__link">Nosotros</a></li>
+                        <li class="header__li"><a href="#" class="header__link">Servicios</a></li> -->
+            <li class="header__li" id="cabecera"><button class="btn_iniciar" id="LoginGoogle">Iniciar sesión en
+                Google</button>
+
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div class="container" style="width: 100vw; height: 90vh;">
+    <main id="ContenidoWeb" class="mt-2 px-2" style="padding-top: 60px; height: 80vh; overflow-y: scroll"></main>
+    <form id="Formulario" class="input-group py-3 fixed-bottom container-fluid subirChat">
+      <label for="mensaje">Mensaje</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enviar mensaje" aria-label="Recipient's username"
+          aria-describedby="button-addon2" id="Mensaje" />
+        <button class="btn btn-outline-info btn" type="submit" id="button-addon2">
+          Enviar
+        </button>
+      </div>
+    </form>
+  </div>
+  </div>
+
+  <footer class="tm-bg-dark-blue">
+    <div class="container">
+      <div class="row">
+        <p class="col-sm-12 text-center tm-font-light tm-color-white p-4 tm-margin-b-0">
+          Copyright © <span class="tm-current-year">2023</span> Tehuelche Team
+          - Diseño: Tehuelche Team</p>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="../Services/firebaseConfig.js"></script>
+  <script type="module" src="../Services/firebase-admin.js"></script>
 </body>
 
 </html>

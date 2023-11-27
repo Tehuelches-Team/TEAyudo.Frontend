@@ -5,13 +5,13 @@ window.onload = function () {
 };
 export const loginPrincipal = document.querySelector("#LoginPrincipal");
 
-document
-  .getElementById("buscarProfesional")
-  .addEventListener("click", function () {
-    cargarSeleccion();
-  });
+// document
+//   .getElementById("buscarProfesional")
+//   .addEventListener("click", function () {
+//     cargarSeleccion();
+//   });
 
-  function cargarSeleccion() {
+function cargarSeleccion() {
   let agenda = [];
   const seleccion = document.querySelectorAll(".celda-verde");
   seleccion.forEach((elemento) => {
