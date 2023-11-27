@@ -1,52 +1,49 @@
+import { getPropuestaAT, getPropuestaTutor } from "../../../Services/PropuestaService.js";
 import detallePropuesta from "./mapping/detallePropuesta.js";
 import tarjetaPropuesta from "./mapping/tarjetaPropuesta.js";
 
 window.onload = async function() {
-    // const urlParams = new URLSearchParams(window.location.search);  
-    // const dato = urlParams.get('usuarioId');
-    // document.getElementById("oculto").value = dato;
-    await mapear();
+    const urlParams = new URLSearchParams(window.location.search);  
+    // const id = urlParams.get('id');
+    // const tipoUsuario = urlParams.get('tipoUsuario');
+    const id = 1;
+    const tipoUsuario = 1;
+    if (tipoUsuario == 1){
+        let propuestas = await getPropuestaAT(id);
+        mapearPropuestasDelAcompanante(propuestas);
+    }
+    else
+    {
+        let propuestas = await getPropuestaTutor(id);
+        mapearPropuestasDelTutor(propuestas);
+    }
 };
 
-const mapear = async (objeto) => 
+const mapearPropuestasDelAcompanante = async (objeto) => 
 {
     let contenedorLista = document.getElementById("columna-lista-propuestas");
     let contenedorDetalle = document.getElementById("columna-visualizados");
-    if(tipoUsuario)
-    contenedorLista.innerHTML += await tarjetaPropuesta();
-    contenedorDetalle.innerHTML += await detallePropuesta();
+    objeto.forEach(async element => {
+        contenedorLista.innerHTML += await tarjetaPropuesta(element.propuestaId, element.tutorResponse.nombre, element.tutorResponse.apellido, element.estadoPropuesta, element.tutorResponse.fotoPerfil);
+    });
+    // contenedorDetalle.innerHTML += await detallePropuesta();
 }
 
 
 
 
-                                        // CAMPOS Para tutor
-            //tarjeta de acompañantes, la ven los tutores
-propuestaId
-acompananteResponse.nombre
-acompananteResponse.apellido
-estadoPropuesta
-acompananteResponse.fotoPerfil
 
-            //Datos para el detalle de propuesta en tutor
-propuestaId
-descripcion
-    //Tutor
-tutorResponse.nombre
-tutorResponse.domicilio
-tutorResponse.correoElectronico
-    //Acompanante
+const mapearPropuestasDelTutor = async (objeto) => 
+{
+    let contenedorLista = document.getElementById("columna-lista-propuestas");
+    let contenedorDetalle = document.getElementById("columna-visualizados");
+    
+    objeto.forEach(async element => {
+        contenedorLista.innerHTML += await tarjetaPropuesta(element.propuestaId, element.acompananteResponse.nombre, element.acompananteResponse.apellido, element.estadoPropuesta, element.acompananteResponse.fotoPerfil);
+    });
+    // contenedorDetalle.innerHTML += await detallePropuesta();
+}
 
-
-
-
-                                        //CAMPOS Para acompanante
-            //tarjeta de tutores, la ven los acompañantes
-propuestaId
-tutorResponse.nombre
-tutorResponse.apellido
-estadoPropuesta
-tutorResponse.fotoPerfil
 
 
 

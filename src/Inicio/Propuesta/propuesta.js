@@ -42,9 +42,7 @@ document.getElementById("botonPropuesta").addEventListener("click", async (e) =>
 
     else
     {
-        //faltan los id y el post
         await postPropuesta(tutorId, acompananteId, tipoAT, descripcion.value);
-
         window.location.href = `../Usuario/tutor/tutorBusqueda/tutorBusqueda.html?tutorId=${tutorId}`;
     };
 });
