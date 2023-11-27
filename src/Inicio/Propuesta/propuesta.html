@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> 
+	<link rel="stylesheet" href="propuesta.css">
+    <title>Document</title>
+</head>
+<body>
+	<main class="main">
+		<div class="maain-div">
+			<h1 class="h1"> Completa los datos de tu propuesta</h1>
+			<div class="contenedor-formulario">
+				<h3>Detalles de la propuesta</h3>
+				<form id="formulario-crear-propuesta">
+					
+					<label class="label" for="modalidad">
+						<span>Modalidad:</span>
+						<div class="contenedor-modalidad-checkbox">
+							<label>
+								<input type="radio" id="domiciliario" name="tipo-servicio">
+								<span>Domiciliario</span>
+							</label>
+							<label>
+								<input type="radio" id="escolar" name="tipo-servicio">
+								<span>Escolar</span>
+							</label>
+						</div>
+					</label>
+					<label class="label" for="descripcion">
+						<span>Descripcion:</span>
+					</label>
+					<textarea class="textarea" name="descripcion" placeholder="Descripcion de la propuesta" id="textarea" required></textarea>
+					<button class="btn boton-formulario btn-primary" type="button" id="botonPropuesta">Enviar propuesta</button>
+				</form>
+			</div>
+		</div>
+	</main>
+	<script type="module" src="./propuesta.js"></script>
+</body>
+</html>

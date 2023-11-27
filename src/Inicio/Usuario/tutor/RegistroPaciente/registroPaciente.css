@@ -1,0 +1,108 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F3FFFF;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #525252;
+    line-height:1.5em 
+}
+
+.main
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+}
+
+#h1{
+    text-align: center;
+    font-weight: bolder;
+}
+
+.words{
+    text-align: center;
+    font-weight: bolder;
+}
+
+.main-div{
+    width: 60vw;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#formularioRegistroPaciente{
+    margin-top: 5vh;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: large;
+}
+
+.formulario-contenedor{
+    width: 50%;
+    height: auto;
+}
+
+.label{
+    width: 100%;
+    height: auto;
+    padding: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.input
+{
+    width: 240px;
+}
+
+.switch
+{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.radio
+{
+    margin: 0 10px 0 10px;
+}
+
+.div-boton{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    padding: 2%;
+}
+
+.custom-btn {
+    padding: 8px 20px; 
+    font-size: 14px; 
+    background-color: rgba(111, 122, 162, 0.7);
+    border: 1px solid rgb(212, 217, 219); 
+    color: #ffffff; 
+    border-radius: 15px; 
+    transition: transform 0.3s; 
+}
+
+.custom-btn:hover {
+    transform: scale(1.05);
+}
+
+

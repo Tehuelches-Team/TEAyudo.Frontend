@@ -1,0 +1,397 @@
+body {
+    background-color: #F3FFFF;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #525252;
+    line-height:1.5em 
+}
+h1 {
+    text-align: center;
+}
+.contenedor {
+    width: 940px;
+    margin: 0 auto;
+   /* Establece márgenes automáticos a los lados para centrar */
+}
+.bloque-busqueda {
+    width: 100%;
+   /* Ancho del 90% para adaptarse al ancho del contenedor padre */
+    margin: 0 auto;
+   /* Centra el div horizontalmente */
+    background-color: #ffffff;
+   /* Fondo blanco */
+    border-radius: 10px;
+   /* Bordes redondeados de 10 px */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+   /* Sombra */
+    padding: 20px 2%;
+   /* Paddings superior e inferior de 20 px y laterales del 5% */
+    box-sizing: border-box;
+   /* Incluye el padding y el borde en el ancho total */
+}
+/* /////////////////////////////////////////// boton basico */
+.boton-basico {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+   /* Agregado para hacer el texto en negrita */
+    color: #ffffff;
+    background-color: #2980b9;
+    border: 2px solid #2980b9;
+    border-radius: 20px;
+   /* Ajustado para hacer los bordes más redondeados */
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.mi-boton:hover {
+    background-color: #1c6499;
+}
+.separador-tabla-boton {
+    display: flex;
+}
+/*/
+////////////////////////////////////////// tabla de horarios */
+.tablaHorarios {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 2px;
+    width: 100%;
+}
+.boton-busqueda {
+    display: flex;
+    align-items:last baseline;
+    justify-content: center;
+    padding-left: 2%;
+}
+.celda {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+   /* Fuente en negrita */
+    cursor: pointer;
+}
+.celda-clic {
+    background-color: #e74c3c;
+}
+.celda-verde {
+    background-color: #2ecc71;
+}
+.celda-izquierda-sup {
+    border-top-left-radius: 10px;
+}
+.celda-izquierda-inf {
+    border-bottom-left-radius: 10px;
+}
+.celda-derecha-sup {
+    border-top-right-radius: 10px;
+}
+.celda-derecha-inf {
+    border-bottom-right-radius: 10px;
+}
+.bloque-horarios-busqueda {
+    width: 80%;
+}
+/*/
+////////////////////////////////////////// input de texto */
+.input-texto {
+    display: inline-block;
+    position: relative;
+    height: 50px;
+}
+.input-texto input, select {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #E0E0E0;
+    border-radius: 4.5px;
+    font-weight: bold;
+    outline: none;
+}
+.bloque-busqueda .input-texto {
+    width: 33%;
+}
+.contenedor-resultados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2%;
+}
+/*/
+//////////////////////////////////////////resultados */
+.resultado {
+    box-sizing: border-box;
+    width: calc(33.33% - 2%);
+    margin-bottom: 1em;
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+   /* Bordes redondeados de 10px */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   /* Sombra con desplazamiento de 0px en X, 4px en Y, 8px de difuminado y color RGBA */
+}
+/* Ajuste de width para centrar el último div en el medio */
+.resultado:last-child {
+    margin-right: auto;
+    margin-left: 1%;
+}
+.imagen {
+    aspect-ratio: 2/2;
+    width: 100%;
+    height: auto;
+    height: auto;
+    display: block;
+    margin-bottom: 0.8em;
+    border-radius: 10px;
+   /* Bordes redondeados de 10px */
+}
+.nombre {
+    position: absolute;
+    top:5%;
+   /* Centra verticalmente */
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+   /* Ajusta para centrar verticalmente */
+    text-align: center;
+   /* Centra horizontalmente */
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+   /* Sombra del texto */
+    font-size: 1.5em;
+   /* Tamaño de fuente 1.5 em */
+    box-sizing: border-box;
+}
+div.descripcion {
+    padding: 0px 10px;
+    box-sizing: border-box;
+    margin-top: 0px;
+   /* Espacio entre la imagen y el párrafo */
+}
+span.otro-elemento-en-linea {
+    color: #2980b9;
+    background-color: #f1f1ff;
+    padding: 0.4em 0.4em;
+    border-radius: 5px;
+   /* Bordes redondeados de 5px */
+    font-weight: bold;
+}
+/*/
+//////////////////////////////////////////formulario */
+.formulario-generico {
+    flex: 1;
+   /* El formulario tomará el espacio disponible */
+}
+div .formulario-generico form {
+    width: 100%;
+    margin: 0 auto;
+}
+.formulario-generico label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+.formulario-generico label > * {
+    margin-right: 10px;
+}
+.formulario-generico input, .formulario-generico select {
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+.formulario-generico .input-texto {
+    width: 300px;
+}
+.formulario-generico textarea {
+    width: 100%;
+    height: 10em;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #E0E0E0;
+    border-radius: 4.5px;
+    font-weight: bold;
+    outline: none;
+    margin-top:1em;
+}
+.formulario-generico .switch-container {
+    display: flex;
+    margin-bottom: 10px;
+    width: 300px;
+    height: 40px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.switch-container label{
+    color:#727272;
+}
+.formulario-generico input[type="radio"] {
+    margin-right: 3em;
+   /* Ajusta según sea necesario */
+    margin-top:0.8em;
+    width: 30px;
+}
+.formulario-generico span {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.boton-formulario {
+    margin-top: 2em;
+    font-size: 1.3em;
+}
+.contenedor-modalidad-checkbox {
+    width: 300px;
+    display: inline-block;
+    position: relative;
+    height: 50px;
+}
+.contenedor-modalidad-checkbox label {
+    display: inline-block;
+   /* Alinea cada label y checkbox en la misma línea */
+    margin-right: 1em;
+   /* Añade espacio entre los checkboxes */
+}
+.contenedor-modalidad-checkbox input {
+    width: 1.3em;
+    height: 1.3em;
+   /* Puedes agregar más estilos según sea necesario */
+}
+.contenedor-modalidad-checkbox span {
+    font-size: 1.1em;
+}
+/*/
+//////////////////////////////////////////pagina:registro-general */
+.registro-general, .contenedor-perfil-AT {
+    display: flex;
+    margin: 0 auto;
+   /* Establece márgenes automáticos a los lados para centrar */
+}
+.foto-derecha {
+    flex: 1;
+   /* La foto-derecha tomará el espacio disponible */
+}
+/* Estilos para la imagen dentro de foto-derecha (ajusta según sea necesario) */
+.foto-derecha img {
+    width: 100%;
+   /* La imagen ocupa el 100% del contenedor */
+    height: auto;
+   /* Mantiene la proporción original de la imagen */
+    border-radius: 10px;
+   /* Bordes redondeados */
+    margin-top: 15px;
+    margin-left: 20px;
+}
+.contenedor-izquierdo-registro-usuario {
+    width: 600px;
+}
+/*/
+//////////////////////////////////////////pagina:Crear-propuesta */
+.contenedor-crear-propuesta {
+    width: 600px;
+    margin: 0 auto;
+   /* Establece márgenes automáticos a los lados para centrar */
+}
+.contenedor-izquierda, .contenedor-derecha {
+    display: inline-block;
+    vertical-align: top;
+    width: 47.5%;
+   /* Ajusta el ancho según sea necesario, dejando espacio para márgenes */
+}
+.contenedor-izquierda {
+    margin-right: 3%;
+   /* Agrega un pequeño margen entre los contenedores */
+}
+/* //////////////////////////////////////////pagina:Perfil-AT */
+/* Columna izquierda */
+/* Columna izquierda */
+.columna-perfil-AT-izquierdo {
+    flex: 1;
+   /* Ocupa el 50% del espacio disponible */
+    margin-right: 3%;
+   /* Añade un margen derecho del 3% */
+}
+.columna-perfil-AT-izquierdo h3 {
+    margin-top: 2em;
+}
+/* Columna derecha */
+.columna-perfil-AT-derecho {
+    flex: 0 0 35%;
+   /* Ocupa el 35% del ancho, pero no puede contraerse ni crecer */
+}
+div.bloque-generar-propuesta{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    padding:30px 0;
+}
+.lista-obras-sociales {
+    list-style: none;
+   /* Elimina los puntos de la lista */
+    padding: 0;
+   /* Elimina el relleno predeterminado de la lista */
+}
+.lista-obras-sociales li {
+    font-weight: bold;
+   /* Texto en negrita */
+    font-size: 1em;
+   /* Tamaño de fuente 1.2em */
+    color: #727272;
+   /* Color de texto menos oscuro, puedes ajustar según sea necesario */
+    margin-bottom: 0.5em;
+   /* Separación de 1.5em entre elementos */
+}
+.bloque-generar-propuesta {
+    text-align: center;
+   /* Centra horizontalmente el contenido */
+    padding: 1em 0;
+   /* Añade padding arriba y abajo de 1em */
+    display: flex;
+   /* Hace que el contenedor sea un contenedor flex */
+    flex-direction: column;
+   /* Apila los elementos verticalmente */
+    align-items: center;
+   /* Centra verticalmente los elementos */
+}
+.bloque-generar-propuesta img {
+    width: 50%;
+   /* La imagen ocupa el 50% del ancho del contenedor */
+}
+.bloque-generar-propuesta h3 {
+    font-size: 1.5em;
+   /* Tamaño de fuente mediano para h3 */
+    margin: 0;
+   /* Elimina el margen predeterminado de h3 */
+}
+.bloque-generar-propuesta h4 {
+    font-size: 1em;
+   /* Tamaño de fuente más chico para h4 */
+    margin: 0.5em 0;
+   /* Añade margen arriba y abajo de 0.5em para h4 */
+}
+.bloque-generar-propuesta a.boton-basico {
+    margin: 1em 0 0;
+    font-size: 1.1em;
+}
+.bloque-generar-propuesta a.boton-basico:hover {
+    background-color: #0056b3;
+   /* Cambia el color de fondo al pasar el mouse sobre el botón (puedes cambiarlo) */
+}
+div.bloque-google-maps {
+    margin-top: 30px;
+    width: 100%;
+}
+.bloque-google-maps img {
+    width: 100%;
+}

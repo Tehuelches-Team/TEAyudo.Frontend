@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> 
+	<link rel="stylesheet" href="./registroAcompanante.css">
+    <title>Document</title>
+</head>
+<body>
+    <main class="main">
+        <h1 class="h1">Completa tu perfil como acompañante terapéutico</h1>
+        <div class="main-div">
+            <div class="formulario-generico">
+                <form class="formulario">
+                    <input type="hidden" id="oculto" name="oculto" value="0">
+                    <label class="label" for="nombre">
+                        <span>Localización laboral:</span>
+                        <input class="input-texto" type="text" placeholder="" id="localizacion" name="" required>
+                    </label>
+                    <label class="label" for="apellido">
+                        <span>Obras sociales:</span>
+                        <input type="hidden" id="obraSociales-info">
+                        <select class="desplegable" id="select">
+                            <option value="" selected>Seleccione las obras sociales...</option>
+                            <option value="OSDE" data-info="1">OSDE</option>
+                            <option value="Swiss Medical" data-info="2">Swiss Medical</option>
+                            <option value="Galeno" data-info="3">Galeno</option>
+                            <option value="Medicus" data-info="4">Medicus</option>
+                            <option value="OSDEPYM" data-info="5">OSDEPYM</option>
+                            <option value="OSPE" data-info="6">OSPE</option>
+                            <option value="OSSEG" data-info="7">OSSEG</option>
+                            <option value="OSUT" data-info="8">OSUT</option>
+                            <option value="OSUTHGRA" data-info="9">OSUTHGRA</option>
+                            <option value="OSFFENTOS" data-info="10">OSFFENTOS</option>
+                            <option value="OSFATUN" data-info="11">OSFATUN</option>
+                            <option value="OSPEPBA" data-info="12">OSPEPBA</option>
+                            <option value="OSPSA" data-info="13">OSPSA</option>
+                            <option value="OSPS" data-info="14">OSPS</option>
+                            <option value="OSPIA" data-info="15">OSPIA</option>
+                        </select>
+                        <!-- <input class="input-texto" type="text" placeholder="" id="obraSociales" name="" required> -->
+                    </label>
+                    <div id="obraSociales-seleccionadas"></div>
+                    <label class="label" for="correo">
+                        <span>Telefono laboral:</span>
+                        <input class="input-texto" type="text" placeholder="" id="telefono" name="" required>
+                    </label>
+                    <label class="label" for="documentacion">
+                        <span>Documentación:</span>
+                        <input class="input-texto" type="file" id="documentacion" name="documentacion" accept="application/pdf" required>
+                    </label>
+                    <label class="label">
+                        <span>Modalidad:</span>
+                        <div class="switch-container">
+                            <label for="escolar">Escolar</label>
+                            <input type="checkbox" id="escolar" name="acompananteEscolar" value="escolar">
+                            <label for="domiciliario">Domiciliario</label>
+                            <input type="checkbox" id="domiciliario" name="acompananteDomiciliario" value="domiciliario">
+                        </div>
+                    </label>
+                    <label class="label">
+                        <label for="experiencia">Acerca de sus experiencias:</label>
+                    </label>
+                    <input type="hidden" id="experiencia-info">
+                    <textarea id="experiencia" class="textarea" name="experiencia" placeholder="Acerca de mi" required></textarea>
+                </form>
+            </div>
+        </div>
+        <div class="separador-tabla-boton">
+            <div class="bloque-horarios-busqueda">
+                <div class="tablaHorarios" id="tablaHorarios">
+                <div class="celda"></div>
+                <div class="celda">Lunes</div>
+                <div class="celda">Martes</div>
+                <div class="celda">Miércoles</div>
+                <div class="celda">Jueves</div>
+                <div class="celda">Viernes</div>
+                <div class="celda">Sábado</div>
+                <div class="celda">Mañana</div>
+                <div id="1" class="celda celda-clic celda-izquierda-sup" onclick="cambiarColor(this)"></div>
+                <div id="2" class="celda celda-clic" onclick="cambiarColor(this)" ></div>
+                <div id="3" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="4" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="5" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="6" class="celda celda-clic celda-derecha-sup" onclick="cambiarColor(this)"></div>
+                <div class="celda">Tarde</div>
+                <div id="7" class="celda celda-clic celda-izquierda-inf" onclick="cambiarColor(this)"></div>
+                <div id="8" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="9" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="10" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="11" class="celda celda-clic" onclick="cambiarColor(this)"></div>
+                <div id="12" class="celda celda-clic celda-derecha-inf" onclick="cambiarColor(this)"></div>
+            </div>
+        </div>
+        <div>
+            <button id="boton" class="btn boton-formulario btn-primary" type="button">Confirmar</button>
+        </div>
+    </main>
+    <script>
+        function cambiarColor(elemento) {
+            elemento.classList.toggle('celda-verde');
+        }
+    </script>
+    <script type="module" src="./registroAcompanante.js"></script>
+</body>
+
+</html>

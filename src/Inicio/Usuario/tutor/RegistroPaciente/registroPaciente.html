@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="registroPaciente.css">
+    <title>Document</title>
+</head>
+<body>
+	<main class="main">
+		<h1 id="h1">Datos del paciente</h1>
+		<div class="main-div">
+			<form id="formularioRegistroPaciente">
+				<input type="hidden" id="ocultoTutorId" name="oculto" value="0">
+				<div class="formulario-contenedor">
+					<label class="label" for="nombre">
+						<span class="words">Nombre:</span>
+						<input class="input" type="text" placeholder="Nombre" id="nombre" name="nombre" required>
+					</label>
+					<label class="label" for="apellido">
+						<span class="words">Apellido:</span>
+						<input class="input" type="text" placeholder="Apellido" id="apellido" name="apellido" required>
+					</label>
+					<label class="label" for="sexo">
+						<span class="words">Sexo:</span>
+						<div class="input switch">
+							<label  for="masculino">Masculino</label>
+							<input class="radio" type="radio" id="masculino" name="sexo" value="masculino">
+							<label  for="acompanante">Femenino</label>
+							<input class="radio" type="radio" id="femenino" name="sexo" value="femenino">
+						</div>
+					</label>
+				</div>
+				<div class="formulario-contenedor">
+					<label class="label" for="fechaNacimiento">
+						<span class="words">Nacimiento:</span>
+						<input class="input" type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+					</label>
+					<label class="label" for="diagnostico">
+						<span class="words">Diagnostico</span>
+						<input class="input" type="text" placeholder="Diagnostico" id="diagnostico" name="diagnostico" required>
+					</label>
+					<label class="label" for="CUD">
+						<span class="words">CUD</span>
+						<input class="input" type="text" placeholder="CUD" id="CUD" name="CUD" required>
+					</label>
+				</div>
+				<div>				
+					<button id="RegistraPaciente" type="button" class="btn btn-primary">Registrar</button>
+				</div>
+			</form>
+		</div>
+	</main>
+    <script type="module" src="./registroPaciente.js"></script>
+</body>
+</html>

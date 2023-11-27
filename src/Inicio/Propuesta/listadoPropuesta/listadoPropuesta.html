@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="listadoPropuesta.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <div class="contenedor">
+   <div id="contenedor-pagina-propuesta">
+      <h1>Listado de propuestas</h1>
+      <div class="filtros-propuestas">
+         <span>Filtrar propuestas:</span>
+         <label>
+            <input type="checkbox" id="pendiente" name="pendiente">
+            <span>Pendientes</span>
+         </label>
+         <label>
+            <input type="checkbox" id="aceptados" name="aceptados">
+            <span>Aceptados</span>
+         </label>
+         <label>
+            <input type="checkbox" id="rechazados" name="rechazados">
+            <span>Rechazados</span>
+         </label>
+      </div>
+      <div>
+         <div class="columna-lista-propuestas" id="columna-lista-propuestas">
+         </div>
+      </div>
+      <div class="columna-visualizados" id="columna-visualizados">
+      
+      </div>
+         
+   </div>
+   <script type="module" src="./listadoPropuesta.js"></script>
+</body>
+</html>
