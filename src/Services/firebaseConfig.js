@@ -161,8 +161,9 @@ const enviarMensaje = async (user) => {
       return;
     }
     console.log(Mensaje.value);
+    let urlBase = `propuesta/${propuesta}/Mensajes`;
     try {
-      await addDoc(collection(db, propuesta + "/Mensajes"), {
+      await addDoc(collection(db, urlBase), {
         uid: user.uid,
         NombreUsuario: user.displayName,
         fecha: new Date(),
@@ -194,7 +195,8 @@ const enviarMensaje = async (user) => {
 
 const ContenidoChat = (user) => {
   //Traer los mensajes en tiempo real
-  const q = query(collection(db, "Mensajes"), orderBy("fecha", "asc"));
+  let urlBase = `propuesta/${propuesta}/Mensajes`;
+  const q = query(collection(db, urlBase), orderBy("fecha", "asc"));
   onSnapshot(q, (querySnapshot) => {
     const MensajesActualizados = [];
     Contenido.innerHTML = "";
