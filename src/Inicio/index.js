@@ -1,6 +1,9 @@
+import { login } from "../Services/usuarioService.js";
+
 window.onload = function () {
   //cargarInicio();
 };
+export const loginPrincipal = document.querySelector("#LoginPrincipal");
 
 document
   .getElementById("buscarProfesional")
@@ -31,8 +34,6 @@ function crearArreglo(indicesRecibidos) {
   return arreglo.join("");
 }
 
-
-
 function obtenerIndicesDesdeCadena(cadena) {
   const arreglo = cadena.split("").map(Number);
   const indices = [];
@@ -49,3 +50,43 @@ function obtenerIndicesDesdeCadena(cadena) {
 
   return indices;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Obtener elementos del DOM
+  const openModalBtn = document.getElementById("openModalBtn");
+  const closeModalBtn = document.getElementById("closeModalBtn");
+  const loginModal = document.getElementById("loginModal");
+  const googleLoginBtn = document.getElementById("googleLoginBtn");
+  const loginForm = document.getElementById("loginForm");
+
+  // Mostrar el modal al hacer clic en el botón de abrir
+  openModalBtn.addEventListener("click", function () {
+    loginModal.style.display = "block";
+  });
+
+  // Ocultar el modal al hacer clic en el botón de cerrar
+  closeModalBtn.addEventListener("click", function () {
+    loginModal.style.display = "none";
+  });
+
+  // Configuración de la autenticación de Google
+  // googleLoginBtn.addEventListener("click", function () {
+  //   // Lógica de autenticación con Google (usando la API de Google)
+  //   // Aquí debes implementar la lógica de autenticación con Google
+  //   // Puedes usar el botón de inicio de sesión de Google proporcionado por la API.
+  // });
+
+  // Agregar evento de submit al formulario (puedes agregar lógica para el login local)
+  loginForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    // Lógica de login local...
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    let usuarioLogeado = await login(email, password);
+    loginModal.style.display = "none"; // Cerrar el modal después del login
+    let tipoUser = usuarioLogeado.result.tipoUsuario;
+    let usuarioId = usuarioLogeado.result.usuarioId;
+    window.location.href = `./Propuesta/listadoPropuesta/listadoPropuesta.html?usuarioId=${usuarioId}&tipoUser=${tipoUser}`;
+    //window.location.href = `../${tipoUser}/index.html?usuarioId=${usuarioId}`;
+  });
+});

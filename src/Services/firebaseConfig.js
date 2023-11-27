@@ -8,6 +8,7 @@ import {
 import { botones } from "../Chat/chat.js";
 import { NombreUsuario } from "../Chat/chat.js";
 import { Mensaje } from "../Chat/chat.js";
+import { loginPrincipal } from "../Inicio/index.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
 import {
   getMessaging,
@@ -34,6 +35,7 @@ import {
   where,
   orderBy,
 } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+//import { enviarToken } from "../Login/login.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -91,54 +93,72 @@ getToken(messaging, {
     console.log("An error occurred while retrieving token. ", err);
   });
 //Verificar que el usuario este logueado
+// onAuthStateChanged(auth, (user) => {
+//   if (user) {
+//     console.log("Usuario logueado");
+//     botones.innerHTML = `<button class="btn btn-outline-success" id="btnLogout">Cerrar sesión</button>`;
+//     let displayName = user.displayName;
+//     let email = user.email;
+//     let emailVerified = user.emailVerified;
+//     let photoURL = user.photoURL;
+//     let isAnonymous = user.isAnonymous;
+//     let uid = user.uid;
+//     let providerData = user.providerData;
+//     Formulario.classList = "input-group py-3 fixed-bottom container-fluid";
+//     ContenidoChat(user);
+
+//     CerrarSesion();
+//   } else {
+//     console.log("Usuario no logueado");
+//     botones.innerHTML = `<button class="btn btn-outline-success" id="btnLogin">Iniciar sesión</button>`;
+//     IniciarSesion();
+//     NombreUsuario.innerHTML = "ChatTEAyudo";
+//     Formulario.classList =
+//       "input-group py-3 fixed-bottom container-fluid d-none";
+//   }
+// }); // <-- added closing parenthesis
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("Usuario logueado");
-    botones.innerHTML = `<button class="btn btn-outline-success" id="btnLogout">Cerrar sesión</button>`;
-    let displayName = user.displayName;
-    let email = user.email;
-    let emailVerified = user.emailVerified;
-    let photoURL = user.photoURL;
-    let isAnonymous = user.isAnonymous;
-    let uid = user.uid;
-    let providerData = user.providerData;
-    Formulario.classList = "input-group py-3 fixed-bottom container-fluid";
-    ContenidoChat(user);
-
-    CerrarSesion();
-  } else {
-    console.log("Usuario no logueado");
-    botones.innerHTML = `<button class="btn btn-outline-success" id="btnLogin">Iniciar sesión</button>`;
     IniciarSesion();
-    NombreUsuario.innerHTML = "ChatTEAyudo";
-    Formulario.classList =
-      "input-group py-3 fixed-bottom container-fluid d-none";
   }
-}); // <-- added closing parenthesis
-
+});
 const IniciarSesion = () => {
-  const btnLogin = document.querySelector("#btnLogin");
+  const btnLogin = document.querySelector("#LoginPrincipal");
   btnLogin.addEventListener("click", () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
-        console.log("Usuario logueado");
-        botones.innerHTML = `<button class="btn btn-outline-success" id="btnLogout">Cerrar sesión</button>`;
-        let displayName = result.user.displayName;
-        let email = result.user.email;
-        let emailVerified = result.user.emailVerified;
-        let photoURL = result.user.photoURL;
-        let isAnonymous = result.user.isAnonymous;
-        let uid = result.user.uid;
-        let providerData = result.user.providerData;
-        NombreUsuario.innerHTML = displayName;
       })
       .catch((error) => {
         console.log(error);
       });
   });
 };
+// const IniciarSesion = () => {
+//   const btnLogin = document.querySelector("#btnLogin");
+//   btnLogin.addEventListener("click", () => {
+//     const provider = new GoogleAuthProvider();
+//     signInWithPopup(auth, provider)
+//       .then((result) => {
+//         console.log(result);
+//         console.log("Usuario logueado");
+//         botones.innerHTML = `<button class="btn btn-outline-success" id="btnLogout">Cerrar sesión</button>`;
+//         let displayName = result.user.displayName;
+//         let email = result.user.email;
+//         let emailVerified = result.user.emailVerified;
+//         let photoURL = result.user.photoURL;
+//         let isAnonymous = result.user.isAnonymous;
+//         let uid = result.user.uid;
+//         let providerData = result.user.providerData;
+//         NombreUsuario.innerHTML = displayName;
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//       });
+//   });
+// };
 
 const CerrarSesion = () => {
   const btnLogout = document.querySelector("#btnLogout");

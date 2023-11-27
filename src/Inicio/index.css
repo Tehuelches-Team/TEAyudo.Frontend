@@ -151,7 +151,7 @@ body {
     align-items: center;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
+    height: 60vh;
 }
 
 .text {
@@ -213,6 +213,7 @@ body {
     /* Paddings superior e inferior de 20 px y laterales del 5% */
     box-sizing: border-box;
     /* Incluye el padding y el borde en el ancho total */
+    margin-top: 50px;
 }
 
 .mi-boton {
@@ -309,4 +310,91 @@ body {
     border-radius: 4.5px;
     font-weight: bold;
     outline: none;
+}
+
+.contenedor-guia {
+    width: 800px;
+    overflow: hidden;
+    /* Limpiar el float */
+    margin: auto;
+}
+
+.guia-bloque {
+    overflow: hidden;
+    /* Limpiar el float */
+    margin-bottom: 3em;
+}
+
+.guia-bloque img {
+    width: 70%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.guia-bloque h2 {
+    font-weight: bold;
+}
+
+.izquierda {
+    width: 50%;
+    float: left;
+}
+
+.derecha {
+    width: 50%;
+    float: right;
+}
+
+/* Para dar estilo y mejorar la apariencia (opcional) */
+.izquierda,
+.derecha {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.derecha img {
+    float: right;
+    text-align: right;
+    /* Alinea el contenido a la derecha */
+}
+
+.guia-bloque p {
+    font-size: 1.2em;
+}
+
+.guia-bloque h2,
+h3 {
+    padding-top: 30px;
+}
+
+.guia-bloque span {
+    font-weight: bold;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
 }
