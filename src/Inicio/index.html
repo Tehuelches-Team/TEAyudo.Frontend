@@ -33,7 +33,8 @@
                         <!-- <li class="header__li"><a href="#" class="header__link">Inicio</a></li>
                         <li class="header__li"><a href="#" class="header__link">Nosotros</a></li>
                         <li class="header__li"><a href="#" class="header__link">Servicios</a></li> -->
-                        <li class="header__li"><button class="btn_iniciar">Iniciar sesión</button></li>
+                        <li class="header__li"><button class="btn_iniciar" id="LoginPrincipal">Iniciar sesión</button>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -80,20 +81,24 @@
                                 <div class="celda">Sábado</div>
 
                                 <div class="celda" onclick="cambiarColor(this)">Mañana</div>
-                                <div id="1" class="celda celda-clic celda-izquierda-sup" onclick="cambiarColor(this)"></div>
+                                <div id="1" class="celda celda-clic celda-izquierda-sup" onclick="cambiarColor(this)">
+                                </div>
                                 <div id="2" class="celda celda-clic" onclick="cambiarColor(this)"></div>
                                 <div id="3" class="celda celda-clic" onclick="cambiarColor(this)"></div>
                                 <div id="4" class="celda celda-clic" onclick="cambiarColor(this)"></div>
                                 <div id="5" class="celda celda-clic" onclick="cambiarColor(this)"></div>
-                                <div id="6" class="celda celda-clic celda-derecha-sup" onclick="cambiarColor(this)"></div>
+                                <div id="6" class="celda celda-clic celda-derecha-sup" onclick="cambiarColor(this)">
+                                </div>
 
                                 <div id="" class="celda" onclick="cambiarColor(this)">Tarde</div>
-                                <div id="7" class="celda celda-clic celda-izquierda-inf" onclick="cambiarColor(this)"></div>
+                                <div id="7" class="celda celda-clic celda-izquierda-inf" onclick="cambiarColor(this)">
+                                </div>
                                 <div id="8" class="celda celda-clic" onclick="cambiarColor(this)"></div>
                                 <div id="9" class="celda celda-clic" onclick="cambiarColor(this)"></div>
                                 <div id="10" class="celda celda-clic" onclick="cambiarColor(this)"></div>
                                 <div id="11" class="celda celda-clic" onclick="cambiarColor(this)"></div>
-                                <div id="12" class="celda celda-clic celda-derecha-inf" onclick="cambiarColor(this)"></div>
+                                <div id="12" class="celda celda-clic celda-derecha-inf" onclick="cambiarColor(this)">
+                                </div>
                             </div>
                             <div class="boton-busqueda"> <a href="#" class="mi-boton" id="buscarProfesional">Buscar
                                     profesional</a>
@@ -211,6 +216,8 @@
         }
     </script>
     <script type="module" src="./index.js"></script>
+    <script type="module" src="../Services/firebaseConfig.js"></script>
+    <script type="module" src="../Services/firebase-admin.js"></script>
 </body>
 
 </html>

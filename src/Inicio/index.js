@@ -1,6 +1,7 @@
 window.onload = function () {
   //cargarInicio();
 };
+export const loginPrincipal = document.querySelector("#LoginPrincipal");
 
 document
   .getElementById("buscarProfesional")
@@ -29,8 +30,6 @@ function crearArreglo(indicesRecibidos) {
   });
   return arreglo.join("");
 }
-
-
 
 function obtenerIndicesDesdeCadena(cadena) {
   const arreglo = cadena.split("").map(Number);
