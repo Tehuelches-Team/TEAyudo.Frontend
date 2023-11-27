@@ -97,6 +97,6 @@ const AbrirChat = async () =>
     document.getElementById("botonAbrirChat").addEventListener("click", async() =>  
     {
         let propuestaId = document.querySelector(".visualizar-propuesta").id;
-        window.location.href = `../../../Chat/chat.html?propuestaId=${propuestaId}`;
+        window.open(`../../../Chat/chat.html?propuestaId=${propuestaId}`);
     });
 }
