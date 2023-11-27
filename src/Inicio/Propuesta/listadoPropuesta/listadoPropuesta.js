@@ -4,10 +4,10 @@ import tarjetaPropuesta from "./mapping/tarjetaPropuesta.js";
 
 window.onload = async function() {
     const urlParams = new URLSearchParams(window.location.search);  
-    // const id = urlParams.get('usuarioId');
-    // const tipoUsuario = urlParams.get('tipoUser');
-    const id = 1;
-    const tipoUsuario = 2;
+    const id = urlParams.get('usuarioId');
+    const tipoUsuario = urlParams.get('tipoUser');
+    // const id = 1;
+    // const tipoUsuario = 2;
     if (tipoUsuario == 1){
         let propuestas = await getPropuestaAT(id);
         await mapearPropuestasDelAcompanante(propuestas);
@@ -22,7 +22,6 @@ window.onload = async function() {
 const mapearPropuestasDelAcompanante = async (objeto) => 
 {
     let contenedorLista = document.getElementById("columna-lista-propuestas");
-    let contenedorDetalle = document.getElementById("columna-visualizados");
     if (objeto.lenght != 0)
     {
         await objeto.forEach(async element => {
@@ -59,7 +58,6 @@ const mapearPropuestasDelTutor = async (objeto) =>
 
 const agregarEvento = async () =>
 {
-    let result;
     let contenedorDetalle = document.getElementById("columna-visualizados");
     let divs = document.querySelectorAll('.elemento-lista-propuesta');
     divs.forEach(async element => {

@@ -1,13 +1,9 @@
 export async function postUsuario(
-  nombre,
-  apellido,
-  correo,
-  fechaNacimiento,
-  cuil,
-  domicilio,
-  fotoPerfil,
-  contrasena
-) {
+                                  nombre, apellido, correo, fechaNacimiento,
+                                  cuil, domicilio, fotoPerfil, contrasena,
+                                  tipoUsuario
+                                ) 
+{
   let config = {
     method: "POST",
     headers: {
@@ -22,6 +18,7 @@ export async function postUsuario(
       fotoPerfil: fotoPerfil,
       domicilio: domicilio,
       fechaNacimiento: fechaNacimiento,
+      tipoUsuario: tipoUsuario
     }),
   };
   try {
@@ -42,9 +39,12 @@ export async function login(email, contrasena) {
   };
   try {
     const response = await fetch(
-      `https://localhost:7174/api/Usuario/${email}/${contrasena}`,
-      config
+      `https://localhost:7174/api/Usuario/${email}/${contrasena}`, config
     );
+    if (response.ok === false)
+    {
+      return 2;
+    };
     let result = await response.json();
     console.log(result);
     return result;

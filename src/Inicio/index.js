@@ -83,10 +83,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     let usuarioLogeado = await login(email, password);
-    loginModal.style.display = "none"; // Cerrar el modal después del login
-    let tipoUser = usuarioLogeado.tipoUsuario;
-    let usuarioId = usuarioLogeado.usuarioId;
-    window.location.href = `./Propuesta/listadoPropuesta/listadoPropuesta.html?usuarioId=${usuarioId}&tipoUser=${tipoUser}`;
-    //window.location.href = `../${tipoUser}/index.html?usuarioId=${usuarioId}`;
+    if (usuarioLogeado !== 2)
+    {
+      loginModal.style.display = "none"; // Cerrar el modal después del login
+      let tipoUser = usuarioLogeado.tipoUsuario;
+      let usuarioId = usuarioLogeado.usuarioId;
+      window.location.href = `./Propuesta/listadoPropuesta/listadoPropuesta.html?usuarioId=${usuarioId}&tipoUser=${tipoUser}`;
+      //window.location.href = `../${tipoUser}/index.html?usuarioId=${usuarioId}`;
+    }
+    else
+    {
+      document.getElementById("email").value = "";
+      document.getElementById("password").value = "";
+      const formulario = document.getElementById("loginForm");
+      document.getElementById("email").setCustomValidity('no se encontraron coincidencias');
+      formulario.reportValidity(); 
+    };
   });
+});
+
+document.getElementById("botonRegistrar").addEventListener("click", () => {
+  window.location.href = `./Usuario/RegistroUsuario/registroUsuario.html`;
 });
