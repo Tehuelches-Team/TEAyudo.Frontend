@@ -21,7 +21,7 @@ window.onload = async function() {
 const mapearPropuestasDelAcompanante = async (objeto) => 
 {
     let contenedorLista = document.getElementById("columna-lista-propuestas");
-    if (objeto.lenght != 0)
+    if (objeto.length != 0)
     {
         await objeto.forEach(async element => {
             contenedorLista.innerHTML += await tarjetaPropuesta(element.propuestaId, element.tutorResponse.nombre, element.tutorResponse.apellido, element.estadoPropuesta, element.tutorResponse.fotoPerfil, element.descripcion);
@@ -41,7 +41,7 @@ const mapearPropuestasDelAcompanante = async (objeto) =>
 const mapearPropuestasDelTutor = async (objeto) => 
 {
     let contenedorLista = document.getElementById("columna-lista-propuestas");
-    if (objeto.lenght != undefined)
+    if (objeto.length != 0)
     {
         for (let index = 0; index < objeto.length; index++) {
             contenedorLista.innerHTML += await tarjetaPropuesta(objeto[index].propuestaId, objeto[index].acompananteResponse.nombre, objeto[index].acompananteResponse.apellido, objeto[index].estadoPropuesta, objeto[index].acompananteResponse.fotoPerfil, objeto[index].descripcion);

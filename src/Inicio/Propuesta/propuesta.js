@@ -43,6 +43,6 @@ document.getElementById("botonPropuesta").addEventListener("click", async (e) =>
     else
     {
         await postPropuesta(tutorId, acompananteId, tipoAT, descripcion.value);
-        window.location.href = `../Usuario/tutor/tutorBusqueda/tutorBusqueda.html?tutorId=${tutorId}`;
+        window.location.href = `../index.html?id=${tutorId}&tipoUsuario=${2}`;
     };
 });

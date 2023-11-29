@@ -107,7 +107,7 @@ onAuthStateChanged(auth, (user) => {
     CerrarSesion();
   } else {
     console.log("Usuario deslogueado");
-    nav.innerHTML = `<button class="btn_iniciar" id="LoginGoogle">Iniciar sesión en Google</button>`;
+    nav.innerHTML = `<button id="LoginGoogle">Iniciar sesión en Google</button>`;
     Formulario.style.display = "none";
     IniciarSesion();
   }
