@@ -2,18 +2,24 @@ import { getPropuestaAT, getPropuestaTutor, putEstadoPropuesta } from "../../../
 import sinPropuestas from "./mapping/sinPropuestas.js";
 import detallePropuesta from "./mapping/detallePropuesta.js";
 import tarjetaPropuesta from "./mapping/tarjetaPropuesta.js";
+import { getIdAcompanante } from "../../../Services/AcompTerapService.js";
+import { getIdTutor } from "../../../Services/TutorService.js";
+
+var tipoUsuario;
 
 window.onload = async function() {
     const urlParams = new URLSearchParams(window.location.search);  
     const id = urlParams.get('id');
-    const tipoUsuario = urlParams.get('tipoUsuario');
+    tipoUsuario = urlParams.get('tipoUsuario');
     if (tipoUsuario == 1){
-        let propuestas = await getPropuestaAT(id);
+        let acompananteId = await getIdAcompanante(id);
+        let propuestas = await getPropuestaAT(acompananteId.id);
         await mapearPropuestasDelAcompanante(propuestas);
     }
     else
     {
-        let propuestas = await getPropuestaTutor(id);
+        let tutorId = await getIdTutor(id);
+        let propuestas = await getPropuestaTutor(tutorId.id);
         await mapearPropuestasDelTutor(propuestas);
     }
 };
@@ -23,9 +29,12 @@ const mapearPropuestasDelAcompanante = async (objeto) =>
     let contenedorLista = document.getElementById("columna-lista-propuestas");
     if (objeto.length != 0)
     {
-        await objeto.forEach(async element => {
-            contenedorLista.innerHTML += await tarjetaPropuesta(element.propuestaId, element.tutorResponse.nombre, element.tutorResponse.apellido, element.estadoPropuesta, element.tutorResponse.fotoPerfil, element.descripcion);
-        });
+        for (let index = 0; index < objeto.length; index++) {
+            contenedorLista.innerHTML += await tarjetaPropuesta(objeto[index].propuestaId, 
+                objeto[index].tutorResponse.nombre, objeto[index].tutorResponse.apellido, 
+                objeto[index].estadoPropuesta, objeto[index].tutorResponse.fotoPerfil, objeto[index].descripcion);
+                    
+        };
         await agregarEvento();
     }
     else
@@ -63,7 +72,7 @@ const agregarEvento = async () =>
     divs.forEach(async element => {
         element.addEventListener("click", async() => 
         {
-            contenedorDetalle.innerHTML = await detallePropuesta(element.id, element.getAttribute("data-info"), element.getAttribute("data-estado"));
+            contenedorDetalle.innerHTML = await detallePropuesta(element.id, element.getAttribute("data-info"), element.getAttribute("data-estado"), tipoUsuario);
             await botonRojo();
             await botonVerde();
             await AbrirChat();

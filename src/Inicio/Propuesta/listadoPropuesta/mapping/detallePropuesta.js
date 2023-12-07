@@ -1,7 +1,7 @@
-export default async function detallePropuesta(id, descripcion, estado)
+export default async function detallePropuesta(id, descripcion, estado, tipoUsuario)
 {
     let botones;
-    if(estado == 0){
+    if(estado == 0 && tipoUsuario == 1){
         botones = `<button type="button" class="btn btn-danger" id="botonRechazar">rechazar</button>
                    <button type="button" class="btn btn-primary" id="botonAbrirChat">Abrir chat</button>
                    <button type="button" class="btn btn-success" id="botonAceptar">Aceptar</button>`; 

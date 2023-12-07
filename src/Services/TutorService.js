@@ -59,7 +59,31 @@ export async function postPaciente(tutorId, nombre, apellido, fechaNacimiento, d
     }
 }
 
+export async function getIdTutor(id){
+    const config = {
+        method: 'GET',
+        headers: 
+        {
+            'Content-Type': 'application/json'
+        },
+    };
+    try 
+    {
+        const response = await fetch
+        (
+            `https://localhost:7044/api/Tutor/Id/${id}`, config
+        );
+        let result = await response.json();
+        return result;
+    }
+    catch (error) 
+    {
+      console.log(error);
+    }
+}
+
 export default {
     postTutor,
-    postPaciente
+    postPaciente,
+    getIdTutor,
 };

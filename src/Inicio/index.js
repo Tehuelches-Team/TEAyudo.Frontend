@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
       loginModal.style.display = "none"; // Cerrar el modal después del login
       let tipoUser = usuarioLogeado.tipoUsuario;
       let usuarioId = usuarioLogeado.usuarioId;
-      window.location.href = `${window.location.pathname}?id=${usuarioId}&tipoUsuario=${tipoUsuario}`;
+      window.location.href = `${window.location.pathname}?id=${usuarioId}&tipoUsuario=${tipoUser}`;
       //window.location.href = `../${tipoUser}/index.html?usuarioId=${usuarioId}`;
     };
   });

@@ -62,7 +62,7 @@ export async function mapearContenedor4(objeto)
             <div class="contenedor-derecho-tarjeta">
                 <img class="imagen" src="${objeto.fotoPerfil}" alt="Descripción de la imagen">
                 <h3>${objeto.nombre} ${objeto.apellido}</h3>
-                <h4>Acompañante Terapeutica</h4>
+                <h4>Acompañante Terapeutico</h4>
                 <button id="propuesta-boton" type="button" class="btn btn-primary">Generar propuesta</button>
             </div>
             <img class="imagen-mapa" src="../../../img/mapa.png" />

@@ -1,12 +1,15 @@
 import { postPropuesta } from "../../Services/PropuestaService.js";
+import { getIdTutor } from "../../Services/TutorService.js";
 
 var tutorId = 0;
 var acompananteId = 0;
+let usuarioId = 0;
 
 window.onload = async function() {
     const urlParams = new URLSearchParams(window.location.search);
     acompananteId = urlParams.get('acompananteId');
-    tutorId = urlParams.get('tutorId');
+    usuarioId = urlParams.get('tutorId');
+    tutorId = await getIdTutor(usuarioId);
 }
 
 document.getElementById("botonPropuesta").addEventListener("click", async (e) => 
@@ -42,7 +45,7 @@ document.getElementById("botonPropuesta").addEventListener("click", async (e) =>
 
     else
     {
-        await postPropuesta(tutorId, acompananteId, tipoAT, descripcion.value);
-        window.location.href = `../index.html?id=${tutorId}&tipoUsuario=${2}`;
+        await postPropuesta(tutorId.id, acompananteId, tipoAT, descripcion.value);
+        window.location.href = `../index.html?id=${usuarioId}&tipoUsuario=${2}`;
     };
 });

@@ -62,6 +62,7 @@ h1 {
     height: 6em;
     padding: 1em;
     margin-bottom: 1em;
+    overflow: hidden;
 }
 .elemento-lista-propuesta img {
     height: 100%;

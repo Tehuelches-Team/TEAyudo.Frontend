@@ -129,7 +129,28 @@ export async function CargarAT(especialidad, disponibilidad, obrasocial, zonaLab
     }
 };
 
-
+export async function getIdAcompanante(id){
+    const config = {
+        method: 'GET',
+        headers: 
+        {
+            'Content-Type': 'application/json'
+        },
+    };
+    try 
+    {
+        const response = await fetch
+        (
+            `https://localhost:7235/api/Acompanantes/Id/${id}`, config
+        );
+        let result = await response.json();
+        return result;
+    }
+    catch (error) 
+    {
+      console.log(error);
+    }
+}
 
 export default {
     getAcompanante,
@@ -137,4 +158,5 @@ export default {
     postEspecialidad,
     postObraSocial,
     CargarAT,
+    getIdAcompanante,
 };

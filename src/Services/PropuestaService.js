@@ -39,6 +39,7 @@ export async function getPropuestaTutor(id){
     };
     try 
     {
+        console.log(id);
         const response = await fetch
         (
             `https://localhost:7231/api/Propuesta/${id}/Tutor`, config
